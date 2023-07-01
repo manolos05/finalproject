@@ -8,12 +8,16 @@ export const MakeMuestra = () => {
     const [tasks, setTasks] = useState(null);
 
     const [coordinates, setCoordinates] = useState(null);
+
+    const [coordinates1, setCoordinates1] = useState(null)
+    
     const getLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
                     const { latitude, longitude } = position.coords;
-                    setCoordinates([latitude, longitude]);
+                    setCoordinates(latitude);
+                    setCoordinates1(longitude)
                 },
                 error => {
                     console.log(error);
@@ -85,7 +89,7 @@ export const MakeMuestra = () => {
                         project_name: `${selectedTask[0].name}`,
                         ubication: `${selectedTask[0].direction}`,
                         area: `${coordinates}`,
-                        ubication_image: "",
+                        ubication_image: `${coordinates1}`,
                         specimen: specimen,
                         quality_specimen: quality_specimen,
                         image_specimen: "",
