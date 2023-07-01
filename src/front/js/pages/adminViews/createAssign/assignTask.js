@@ -1,26 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../../store/appContext";
+import React, { useEffect, useState, useContext } from "react";
+import { Context } from "../../../store/appContext";
 
 
-export const ViewWorkers = () => {
+export const AssignTask = () => {
+
   const { store, actions } = useContext(Context)
 
-  const heading = ["name", "last Name", "email"]
+  const heading = ["Proyecto", "id", "area", "Especie", "imagen", "Calidad", "Ubicacion", "imagen ubicacion", "Comentarios", "Eliminar"]
 
   useEffect(() => {
-    actions.loadUser()
+    actions.getSample()
   }, []);
+
 
   const handledelete = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/user/${id}`,
+        `http://localhost:3001/muestra/${id}`,
         {
           method: "DELETE",
         }
       ); if (response.ok) {
         await response.json()
-        actions.loadUser()
+        actions.getSample()
       };
     } catch (error) {
       console.log("error", error);
@@ -28,10 +30,10 @@ export const ViewWorkers = () => {
 
 
   }
-
+  console.log(store.getMuestra)
   return (
     <>
-      <table className="table">
+      <table class="table">
         <thead>
           <tr>
             {heading.map((head, i) => (
@@ -41,18 +43,26 @@ export const ViewWorkers = () => {
           </tr>
         </thead>
         <tbody>
-          {(
-            store.users.map(({ name, last_name, email, id }, i) => {
-              return (
-                <tr key={i}>
-                  <td>{name}</td>
-                  <td>{last_name}</td>
-                  <td>{email}</td>
-                  <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
-                </tr>
-              )
-            }))
-          }
+
+          {store.getMuestra.length !== 0 ? (
+            store.getMuestra.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication, ubication_image }, i) =>
+
+              <tr key={i}>
+                <td>{project_name}</td>
+                <td>{id}</td>
+                <td>{area}</td>
+                <td>{specimen}</td>
+                <td>{image_specimen}</td>
+                <td>{quality_specimen}</td>
+                <td>{ubication}</td>
+                <td>{aditional_comments}</td>
+                <td>{ubication_image}</td>
+                <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
+              </tr>
+            )
+
+          )
+            : (<div></div>)}
         </tbody>
       </table>
 

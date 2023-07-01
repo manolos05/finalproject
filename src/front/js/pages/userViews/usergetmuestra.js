@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useform";
-import { Mapas } from "../../component/mapas";
+
 
 
 export const UserGetMuestra = () => {
