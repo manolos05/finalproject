@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useform";
+import { LocationSamples } from "../../component/googleMapas";
 
 
 
@@ -160,7 +161,7 @@ export const UserGetMuestra = () => {
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
             
-              <p>hola</p>
+              <LocationSamples />
 
           </div>
           <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
