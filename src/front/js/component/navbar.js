@@ -29,7 +29,7 @@ export const Navbar = () => {
 					<ul class="navbar-nav">
 
 						<li class="nav-item">
-							{location.pathname === "/" && <a className="nav-link" href="http://localhost:3001/login">Login</a>}
+							{location.pathname === "/" && <a className="nav-link" href="http://localhost:3000/login">Login</a>}
 						</li>
 
 					</ul>
