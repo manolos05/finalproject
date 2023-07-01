@@ -13,7 +13,7 @@ export const Navbar = () => {
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
-				<a class="navbar-brand" href="https://manolos05-ideal-xylophone-7q55p7xj9jgcp9g6-3000.preview.app.github.dev/">
+				<a class="navbar-brand" href="http://localhost:3001">
 					<img src="https://www.calacademy.org/sites/all/themes/calacademy_zen/images/logo-green-460px.png" alt="Logo" width="30" height="30" class="d-inline-block align-top" />
 					Field Expedition
 				</a>
