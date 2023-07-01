@@ -33,8 +33,8 @@ class Muestra(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String(150), unique=False, nullable=False)
     ubication = db.Column(db.String(120), unique=False, nullable=False)
-    ubication_image = db.Column(db.String(120), unique=False, nullable=False)
-    area = db.Column(db.String(80), unique=False, nullable=False)
+    lng = db.Column(db.String(80), unique=False, nullable=False)
+    lat = db.Column(db.String(80), unique=False, nullable=False)
     specimen = db.Column(db.String(80), unique=False, nullable=False)
     quality_specimen = db.Column(db.String(80), unique=False, nullable=False)
     image_specimen= db.Column(db.String(80), unique=False, nullable=False)
@@ -47,8 +47,8 @@ class Muestra(db.Model):
             "id" : self.id,
             "project_name": self.project_name,
             "ubication": self.ubication,
-            "ubication_image": self.ubication_image,
-            "area": self.area,
+            "lng": self.lng,
+            "lat": self.lat,
             "specimen": self.specimen,
             "quality_specimen": self.quality_specimen,
             "image_specimen": self.image_specimen,

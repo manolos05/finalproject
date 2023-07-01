@@ -3,7 +3,7 @@ import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "./Maps.css";
 
-export const LocationSamples = ({lat, lng}) => {
+export const LocationSamples = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyBJZvuPMhRyzqRVJwbNwO2P03360jQy2V0",
   });
@@ -19,7 +19,7 @@ export const LocationSamples = ({lat, lng}) => {
           center={center}
           zoom={10}
         >
-        <Marker position={{ lat: {lat}, lng: {lng} }} />
+        <Marker position={{ lat: -36.82699, lng: -73.04977  }} />
         </GoogleMap>
       )}
     </div>
