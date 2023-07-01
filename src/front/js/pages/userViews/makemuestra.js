@@ -76,7 +76,7 @@ export const MakeMuestra = () => {
     const createSampleRequest = async () => {
         try {
             await fetch(
-                "https://manolos05-ideal-xylophone-7q55p7xj9jgcp9g6-3001.preview.app.github.dev/muestra",
+                "http://localhost:3001/muestra",
                 {
                     method: "POST",
                     body: JSON.stringify({
