@@ -313,6 +313,19 @@ def delete_all_proyectos():
         # En caso de error, hacer rollback y devolver un mensaje de error
         db.session.rollback()
         return jsonify({'message': 'Error al borrar los proyectos', 'error': str(e)}), 500
+    
+
+@app.route('/muestras', methods=['DELETE'])
+def delete_all_muestras():
+    try:
+        # Borrar todos los muestras
+        db.session.query(Muestra).delete()
+        db.session.commit()
+        return jsonify({'message': 'Todos las muestras han sido borradas'}), 200
+    except Exception as e:
+        # En caso de error, hacer rollback y devolver un mensaje de error
+        db.session.rollback()
+        return jsonify({'message': 'Error al borrar las muestras', 'error': str(e)}), 500
 
 #Delete PROYECTO by id
 @app.route('/proyecto/<int:id>', methods=['DELETE'])
