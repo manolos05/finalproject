@@ -6,7 +6,7 @@ export const AssignTask = () => {
 
   const { store, actions } = useContext(Context)
 
-  const heading = ["Proyecto", "id", "area", "Especie", "imagen", "Calidad", "Ubicacion", "imagen ubicacion", "Comentarios", "Eliminar"]
+  const heading = ["Id", "Proyecto", "Ubicación", "Especie", "Calidad", "Imagen", "Comentatios", "Eliminar"]
 
   useEffect(() => {
     actions.getSample()
@@ -30,7 +30,7 @@ export const AssignTask = () => {
 
 
   }
-  console.log(store.getMuestra)
+
   return (
     <>
       <table class="table">
@@ -45,18 +45,16 @@ export const AssignTask = () => {
         <tbody>
 
           {store.getMuestra.length !== 0 ? (
-            store.getMuestra.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication, ubication_image }, i) =>
+            store.getMuestra.map(({ project_name, id, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) =>
 
               <tr key={i}>
-                <td>{project_name}</td>
                 <td>{id}</td>
-                <td>{area}</td>
-                <td>{specimen}</td>
-                <td>{image_specimen}</td>
-                <td>{quality_specimen}</td>
+                <td>{project_name}</td>
                 <td>{ubication}</td>
+                <td>{specimen}</td>
+                <td>{quality_specimen}</td>
+                <td>{image_specimen}</td>
                 <td>{aditional_comments}</td>
-                <td>{ubication_image}</td>
                 <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
               </tr>
             )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useform";
-import { LocationSamples } from "../../component/googleMapas";
+
 
 
 
@@ -17,7 +17,7 @@ export const UserGetMuestra = () => {
 
   const { specimen, quality_specimen, aditional_comments } = values
 
-  const heading = ["Id", "Proyecto", "Ubicación", "Especie", "Calidad", "imagen", "Comentarios", "Editar", "Coordenadas"]
+  const heading = ["Id", "Proyecto", "Ubicación", "Especie", "Calidad", "imagen", "Comentarios", "Editar"]
 
   let storageUSer = JSON.parse(localStorage.getItem("user"));
 
@@ -62,6 +62,10 @@ export const UserGetMuestra = () => {
   return (
     <>
 
+
+
+
+
       <nav>
         <div className="nav nav-tabs" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
@@ -93,7 +97,7 @@ export const UserGetMuestra = () => {
                     <td>{quality_specimen}</td>
                     <td>{image_specimen}</td>
                     <td>{aditional_comments}</td>
-                    <td>lat: {Number(lat)} , lng: {Number(lng)}</td>
+
                     <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue>Editar</button>
                     </td>
                   </tr>
@@ -148,8 +152,8 @@ export const UserGetMuestra = () => {
 
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
+          ...
 
-          <LocationSamples />
         </div>
       </div>
     </>

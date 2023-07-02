@@ -1,32 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "./Mapss.css";
 
 export const LocationSamples = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBJZvuPMhRyzqRVJwbNwO2P03360jQy2V0",
+    googleMapsApiKey: "AIzaSyAS4GlwLgGlAojRVr94SxhuGj66YX5pBt8",
   });
   const center = useMemo(() => ({ lat: -36.82699, lng: -73.04977 }), []);
 
   const [muestras, setMuestras] = useState("")
-
-
-  const [coord, SetCoord] = useState({})
-
-  const newMuestras = () => {
-    let newCoord = [...muestras]
-    const newFormat = newCoord.map(obj => {
-      const lat = Number(obj.lat);
-      const lng = Number(obj.lng)
-      return ({ lat: `${lat}`, lat: `${lng}` })
-      SetCoord(newFormat)
-    })
-
-
-  }
-
-
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
 
   useEffect(() => {
@@ -42,6 +26,10 @@ export const LocationSamples = () => {
     };
   }, []);
 
+  const handleMarkerClick = (marker) => {
+    setSelectedMarker(marker);
+  };
+
 
   return (
     <div className="App1">
@@ -53,22 +41,25 @@ export const LocationSamples = () => {
           center={center}
           zoom={10}
         >
-          {muestras.length !== 0 ?
-
-            (coord.map((cod, i) => {
-              return [
-                <div key={i}>
-                  <Marker position={cod} />
-
-                </div>
-
-              ]
-
-            })) : (<></>)
-
-          }
-
-
+          {muestras &&
+            muestras.map((muestra) => (
+              <Marker
+                key={muestra.id}
+                position={{ lat: Number(muestra.lat), lng: Number(muestra.lng) }}
+                onClick={() => handleMarkerClick(muestra)}
+              />
+            ))}
+          {selectedMarker && (
+            <InfoWindow
+              position={{ lat: Number(selectedMarker.lat), lng: Number(selectedMarker.lng) }}
+              onCloseClick={() => setSelectedMarker(null)}
+            >
+              <div>
+                <h3>{selectedMarker.specimen}</h3>
+                <p>Estado: {selectedMarker.quality_specimen}</p>
+              </div>
+            </InfoWindow>
+          )}
         </GoogleMap>
       )}
     </div>
