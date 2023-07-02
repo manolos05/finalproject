@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useform";
 
-
-
+import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api";
+import { useMemo } from "react";
+import "./Maps1.css";
 
 export const UserGetMuestra = () => {
 
-  const [muestras, setMuestras] = useState([])
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyAS4GlwLgGlAojRVr94SxhuGj66YX5pBt8",
+  });
+  const center = useMemo(() => ({ lat: -36.82699, lng: -73.04977 }), []);
+
+  const handleMarkerClick = (marker) => {
+    setSelectedMarker(marker);
+  };
+
+
+
+  const [muestras, setMuestras] = useState("")
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
   const [values, handleInputChange] = useForm({
     specimen: "",
@@ -62,10 +75,6 @@ export const UserGetMuestra = () => {
   return (
     <>
 
-
-
-
-
       <nav>
         <div className="nav nav-tabs" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
@@ -87,7 +96,7 @@ export const UserGetMuestra = () => {
             <tbody>
 
               {muestras.length !== 0 ? (
-                muestras.muestras.map(({ project_name, id, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
+                muestras.map(({ project_name, id, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
 
                   <tr key={i}>
                     <td>{id}</td>
@@ -149,10 +158,42 @@ export const UserGetMuestra = () => {
               </div>
             </div>
           </div>
-
         </div>
+
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
-          ...
+          <div className="App1">
+            {!isLoaded ? (
+              <h1>Loading...</h1>
+            ) : (
+              <GoogleMap
+                mapContainerClassName="map-container"
+                center={center}
+                zoom={10}
+              >
+                {muestras &&
+                  muestras.map((muestra) => (
+                    <Marker
+                      key={muestra.id}
+                      position={{ lat: Number(muestra.lat), lng: Number(muestra.lng) }}
+                      onClick={() => handleMarkerClick(muestra)}
+                    />
+                  ))}
+                {selectedMarker && (
+                  <InfoWindow
+                    position={{ lat: Number(selectedMarker.lat), lng: Number(selectedMarker.lng) }}
+                    onCloseClick={() => setSelectedMarker(null)}
+                  >
+                    <div>
+                      <h3>{selectedMarker.specimen}</h3>
+                      <p>Estado: {selectedMarker.quality_specimen}</p>
+                    </div>
+                  </InfoWindow>
+                )}
+              </GoogleMap>
+            )}
+          </div>
+
+
 
         </div>
       </div>

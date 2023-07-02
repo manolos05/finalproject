@@ -367,7 +367,7 @@ def get_user_muestras(user_id):
     # Serializar las muestras en una lista
     serialized_muestras = [muestra.serialize() for muestra in muestras]
 
-    return jsonify({'muestras': serialized_muestras}), 200
+    return jsonify( serialized_muestras), 200
 
 #Hacer PUT a una muestra por id (Actualizar)
 @app.route('/muestra/<int:muestra_id>', methods=['PUT'])
