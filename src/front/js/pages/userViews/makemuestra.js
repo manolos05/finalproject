@@ -10,7 +10,7 @@ export const MakeMuestra = () => {
     const [coordinates, setCoordinates] = useState(null);
 
     const [coordinates1, setCoordinates1] = useState(null)
-    
+
     const getLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -182,8 +182,8 @@ export const MakeMuestra = () => {
 
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="text" id="form3Example1c" className="form-control" />
-                                                        <label className="form-label" htmlFor="form3Example1c">Imagen</label>
+                                                        <input type="text" id="form3Example1c" className="form-control" capture="camera" />
+                                                        <label className="form-label" htmlFor="form3Example1c">Tomar foto con la cámara del teléfono</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
