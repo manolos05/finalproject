@@ -34,7 +34,7 @@ export const Navbar = () => {
 					</ul>
 				</div>
 				<div className="ml-auto">
-					{location.pathname !== "/login" && location.pathname !== "/" && <button onClick={actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
+					{location.pathname !== "/login" && location.pathname !== "/" && <button onClick={() => actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
 				</div>
 			</div>
 		</nav>
