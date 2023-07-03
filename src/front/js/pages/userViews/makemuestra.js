@@ -123,9 +123,6 @@ export const MakeMuestra = () => {
 
   }
 
-
-
-
   return (
 
     <section className="vh-100" style={{ backgroundColor: "#eee" }}>
@@ -228,7 +225,7 @@ export const MakeMuestra = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => handleChangeProjectState()}>Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => handleChangeProjectState()} data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>
