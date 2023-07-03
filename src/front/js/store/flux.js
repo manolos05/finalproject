@@ -21,7 +21,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			samplePost: "",
 			getMuestra: [],
 			image: "",
-			loading: false
+			loading: false,
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -167,7 +168,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			posttUrlImages: async (e) => {
+			postUrlImages: async (e) => {
 				const files = e.target.files;
 				const data = new FormData();
 				data.append("file", files[0])
@@ -189,6 +190,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				localStorage.clear()
 				navigate("/")
 			},
+
+
 
 
 

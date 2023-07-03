@@ -16,6 +16,13 @@ export const CreateMuestra = () => {
 			buttonText: "Eliminar",
 			url: "/dashboard/assigntask",
 		},
+		{
+			img: "https://res.cloudinary.com/dz6bglmyq/image/upload/v1688339243/delete_b1uzqe.png",
+			title: "Activar/Desactivar proyectos",
+			text: "Puedes activar o desactivar los proyectos a los usuarios",
+			buttonText: "Gestionar",
+			url: "/dashboard/manageproject",
+		},
 	];
 	return (
 		<div

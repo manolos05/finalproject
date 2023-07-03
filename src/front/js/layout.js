@@ -23,6 +23,7 @@ import { PendingTask } from "./pages/userViews/pendingtask";
 import { MakeMuestra } from "./pages/userViews/makemuestra";
 import { CreateProject } from "./pages/adminViews/createAssign/createProject";
 import { AssignTask } from "./pages/adminViews/createAssign/assignTask";
+import { Gestionar } from "./pages/adminViews/createAssign/gestionarProyectos";
 
 
 
@@ -50,6 +51,7 @@ const Layout = () => {
                         <Route element={<CreateMuestra />} path="/dashboard/create" />
                         <Route element={<CreateProject />} path="/dashboard/createproject" />
                         <Route element={<AssignTask />} path="/dashboard/assigntask" />
+                        <Route element={<Gestionar />} path="/dashboard/manageproject" />
                         <Route element={<ViewMuestras />} path="/dashboard/viewmuestras" />
                         <Route element={<ViewWorkers />} path="/dashboard/workers" />
                         <Route element={<UserGetMuestra />} path="/dashboard/usergetmuestra" />

@@ -54,7 +54,6 @@ export const ViewMuestras = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(muestras)}
               {muestras.length !== 0 ? (
                 muestras.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
                   return (
