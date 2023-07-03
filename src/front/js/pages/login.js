@@ -19,7 +19,7 @@ export const Login = () => {
     const navigate = useNavigate()
 
     const loginUserRequest = async () => {
-        actions.login({ email, password, navigate })
+        actions.login(email, password, navigate)
     }
 
     useEffect(() => {

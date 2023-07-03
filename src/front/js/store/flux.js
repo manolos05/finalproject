@@ -19,12 +19,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			users: [],
 			del: null,
 			samplePost: "",
-			getMuestra: []
+			getMuestra: [],
+			image: "",
+			loading: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 
-			login: async ({ email, password, navigate }) => {
+			login: async (email, password, navigate) => {
 				try {
 					const response = await fetch(
 						"http://localhost:3001/login",
@@ -164,6 +166,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
+
+			getUrlImages: async (e) => {
+				const files = e.target.files;
+				const data = new FormData();
+				data.append("file", files[0])
+				data.append("upload_preset", "proyecto4Geeks");
+				setStore({ loading: true })
+				const res = await fetch("http://api.cloudinary.com/v1_1/dadtkqfdf/image/upload",
+					{
+						method: "POST",
+						body: data
+					})
+				const file = await res.json()
+				const data1 = file.secure_url
+				setStore({ image: data1 });
+				setStore({ loading: false })
+			},
+
+			logOut: async (navigate) => {
+				setStore({ user: null })
+				localStorage.clear()
+				navigate("/")
+			},
+
+
 
 
 			exampleFunction: () => {

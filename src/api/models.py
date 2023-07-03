@@ -37,7 +37,7 @@ class Muestra(db.Model):
     lat = db.Column(db.String(80), unique=False, nullable=False)
     specimen = db.Column(db.String(80), unique=False, nullable=False)
     quality_specimen = db.Column(db.String(80), unique=False, nullable=False)
-    image_specimen= db.Column(db.String(80), unique=False, nullable=False)
+    image_specimen= db.Column(db.String(250), unique=False, nullable=False)
     aditional_comments = db.Column(db.String(90), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     proyecto_id = db.Column(db.Integer, db.ForeignKey('proyecto.id'), nullable=False)

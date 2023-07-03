@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { actions } = useContext(Context)
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const logout = () => {
-		localStorage.clear()
-		navigate("/login")
-	}
+
 	return (
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,7 +34,7 @@ export const Navbar = () => {
 					</ul>
 				</div>
 				<div className="ml-auto">
-					{location.pathname !== "/login" && location.pathname !== "/" && <button onClick={logout} className="btn btn-primary">Log Out</button>}
+					{location.pathname !== "/login" && location.pathname !== "/" && <button onClick={actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
 				</div>
 			</div>
 		</nav>
