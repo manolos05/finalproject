@@ -28,7 +28,7 @@ export const MakeMuestra = () => {
     }
   };
 
-  const [values, handleInputChange] = useForm({
+  const [values, handleInputChange, reset] = useForm({
 
     ubication_image: "",
     area: "",
@@ -183,7 +183,7 @@ export const MakeMuestra = () => {
 
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
-                            <input type="file" id="form3Example1c" name="image_specimen" className="form-control" onChange={actions.getUrlImages} />
+                            <input type="file" id="form3Example1c" name="image_specimen" className="form-control" onChange={actions.postUrlImages} />
                             <label className="form-label" htmlFor="form3Example1c">Imagen</label>
                           </div>
                         </div>
@@ -247,7 +247,7 @@ export const MakeMuestra = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => createSampleRequest()} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest(); location.reload() }} data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>

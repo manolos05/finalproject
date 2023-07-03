@@ -7,6 +7,8 @@ export const Navbar = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
+	const logoutCondition = location.pathname !== "/login" && location.pathname !== "/" && location.pathname !== "signup"
+
 
 	return (
 
@@ -34,7 +36,7 @@ export const Navbar = () => {
 					</ul>
 				</div>
 				<div className="ml-auto">
-					{location.pathname !== "/login" && location.pathname !== "/" && <button onClick={() => actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
+					{logoutCondition && <button onClick={() => actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
 				</div>
 			</div>
 		</nav>

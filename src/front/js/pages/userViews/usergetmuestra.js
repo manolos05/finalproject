@@ -20,6 +20,10 @@ export const UserGetMuestra = () => {
 
   const [muestras, setMuestras] = useState("")
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [editId, setEditId] = useState("")
+
+  const estado = [{ val: "Conservada", id: 1 }, { val: "Ligeramente afectada", id: 2 }, { val: "Mal estado", id: 3 }];
+
 
   const [values, handleInputChange] = useForm({
     specimen: "",
@@ -57,9 +61,9 @@ export const UserGetMuestra = () => {
         {
           method: "PUT",
           body: JSON.stringify({
-            specimen: "",
-            quality_specimen: "",
-            aditional_comments: ""
+            specimen: specimen,
+            quality_specimen: quality_specimen,
+            aditional_comments: aditional_comments
           }),
           headers: {
             "Content-Type": "application/json",
@@ -123,7 +127,7 @@ export const UserGetMuestra = () => {
                     </td>
                     <td>{aditional_comments}</td>
 
-                    <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue>Editar</button>
+                    <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Editar</button>
                     </td>
                   </tr>
 
@@ -146,30 +150,41 @@ export const UserGetMuestra = () => {
                 </div>
                 <div className="modal-body">
                   Solo puede modificar los siguientes datos:
+
+                  <form>
+                    <div className="d-flex flex-row align-items-center mb-4">
+                      <div className="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example1c" className="form-control" name="specimen" value={specimen} onChange={handleInputChange} />
+                        <label className="form-label" htmlFor="form3Example1c">Especie</label>
+                      </div>
+                    </div>
+                    <div className="d-flex flex-row align-items-center mb-4">
+                      <div className="form-outline flex-fill mb-0">
+                        <select onChange={handleInputChange} name="quality_specimen" className="form-select" aria-label="Default select example">
+                          <option defaultValue>Seleccionar Estado de la Muestra</option>
+                          {
+                            estado.map(({ val, id }, i) => {
+                              return (
+                                <option value={val} key={i}>{val}</option>
+
+                              )
+                            })
+                          }
+                        </select>
+                        <label className="form-label" htmlFor="form3Example1c">Seleccionar el estado de la muestra</label>
+                      </div>
+                    </div>
+                    <div className="d-flex flex-row align-items-center mb-4">
+                      <div className="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
+                        <label className="form-label" htmlFor="form3Example1c">Comentarios</label>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-                <form>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" className="form-control" name="specimen" value={specimen} onChange={handleInputChange} />
-                      <label className="form-label" htmlFor="form3Example1c">Especie</label>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" className="form-control" name="quality_specimen" value={quality_specimen} onChange={handleInputChange} />
-                      <label className="form-label" htmlFor="form3Example1c">Calidad</label>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row align-items-center mb-4">
-                    <div className="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
-                      <label className="form-label" htmlFor="form3Example1c">Comentarios</label>
-                    </div>
-                  </div>
-                </form>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" onClick={() => handleChangeSampleData()}>Confirmar</button>
+                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId); location.reload() }} data-bs-dismiss="modal">Confirmar</button>
                 </div>
               </div>
             </div>

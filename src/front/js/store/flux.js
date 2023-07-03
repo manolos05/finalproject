@@ -167,7 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			getUrlImages: async (e) => {
+			posttUrlImages: async (e) => {
 				const files = e.target.files;
 				const data = new FormData();
 				data.append("file", files[0])
