@@ -7,7 +7,7 @@ export const Navbar = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const logoutCondition = location.pathname !== "/login" && location.pathname !== "/" && location.pathname !== "signup"
+	const logoutCondition = location.pathname !== "/login" && location.pathname !== "/" && location.pathname !== "/signup"
 
 
 	return (

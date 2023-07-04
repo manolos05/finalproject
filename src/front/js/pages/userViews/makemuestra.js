@@ -106,7 +106,7 @@ export const MakeMuestra = () => {
 
   const handleChangeProjectState = async () => {
     try {
-      fetch(`http://localhost:3001/${selectedTask[0].id}`,
+      fetch(`http://localhost:3001/proyecto/${selectedTask[0].id}`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -125,21 +125,40 @@ export const MakeMuestra = () => {
 
   return (
 
-    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
-      <div className="container h-100">
+    <section
+      className="vh-100"
+      style={{
+        backgroundImage:
+          "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
             <div className="card text-black" style={{ borderRadius: "25px" }}>
-              <div className="card-body p-md-5">
-                <div className="row justify-content-center">
-                  <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Create una nueva muestra</p>
+              <div className="card" style={{ borderRadius: "1rem" }}>
+                <div className="row g-0 align-items-center">
+                  <div className="col-md-6 col-lg-5 d-none d-md-block align-items-center m-5">
+                    <img
+                      src="https://res.cloudinary.com/dz6bglmyq/image/upload/v1688411078/muestra_qdbrqw.png"
+                      alt="login form"
+                      className="img-fluid"
+                      style={{ borderRadius: "1rem 0 0 1rem" }}
+                    />
+                  </div>
+                  <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 align-items-center">
+                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 align-items-center">
+                      Create a new Sample
+                    </p>
                     {tasks !== null &&
                       <form className="mx-1 mx-md-4">
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
                             <select onChange={(e) => { handleInputChange(e); selectTask(e.target.value) }} name="proyecto_id" className="form-select" aria-label="Default select example">
-                              <option defaultValue>Seleccionar Proyecto</option>
+                              <option defaultValue>Select Project</option>
                               {
                                 tasks.map((task, i) => {
 
@@ -149,7 +168,7 @@ export const MakeMuestra = () => {
                                 })
                               }
                             </select>
-                            <label className="form-label" htmlFor="form3Example1c">Seleccionar el muestreo correspondiente</label>
+                            <label className="form-label" htmlFor="form3Example1c">Select the corresponding sample</label>
 
 
                           </div>
@@ -158,13 +177,13 @@ export const MakeMuestra = () => {
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
                             <input type="text" id="form3Example1c" className="form-control" name="specimen" value={specimen} onChange={handleInputChange} />
-                            <label className="form-label" htmlFor="form3Example1c">Nombre de la especie</label>
+                            <label className="form-label" htmlFor="form3Example1c">Species Name</label>
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
                             <select onChange={handleInputChange} name="quality_specimen" className="form-select" aria-label="Default select example">
-                              <option defaultValue>Seleccionar Estado de la Muestra</option>
+                              <option defaultValue>Select Sample State</option>
                               {
                                 estado.map(({ val, id }, i) => {
                                   return (
@@ -174,29 +193,29 @@ export const MakeMuestra = () => {
                                 })
                               }
                             </select>
-                            <label className="form-label" htmlFor="form3Example1c">Seleccionar el estado de la muestra</label>
+                            <label className="form-label" htmlFor="form3Example1c">Sample State</label>
                           </div>
                         </div>
 
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
-                            <input type="file" id="form3Example1c" name="image_specimen" className="form-control" onChange={actions.postUrlImages} />
-                            <label className="form-label" htmlFor="form3Example1c">Imagen</label>
+                            <input type="file" id="form3Example1c" name="image_specimen" className="form-control" onChange={actions.postUrlImages()} />
+                            <label className="form-label" htmlFor="form3Example1c">Image</label>
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
                             <textarea type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
-                            <label className="form-label" htmlFor="form3Example1c">Comentarios adicionales</label>
+                            <label className="form-label" htmlFor="form3Example1c">Adittional Commentes</label>
                           </div>
                         </div>
 
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Create</button>
+                            <button type="button" className="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Create</button>
 
                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4"></div>
-                            <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Terminar muestreo</button>
+                            <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Finish Sample</button>
                           </div>
                         </div>
 
@@ -225,7 +244,7 @@ export const MakeMuestra = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => handleChangeProjectState()} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { handleChangeProjectState(); location.reload() }} data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>
@@ -244,15 +263,13 @@ export const MakeMuestra = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest(); location.reload() }} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest() }} data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>
       </div>
 
     </section>
-
-
 
   )
 }
