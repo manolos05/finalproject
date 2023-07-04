@@ -15,6 +15,8 @@ export const Signup = () => {
         password2: ""
     })
 
+    const userRol = [{ val: "1 ", id: 1 }, { val: "2", id: 2 }];
+
     const { name, lastname, rut, email, rol, password, password2 } = inputValues;
 
     const createUserRequest = async () => {
@@ -84,8 +86,18 @@ export const Signup = () => {
                                                 <div className="d-flex flex-row justify-content-center align-items-center mb-4">
                                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="text" name="rol" id="form3Example1c" className="form-control" value={rol} onChange={handleInputChange} />
-                                                        <label className="form-label" for="form3Example1c">Rol</label>
+                                                        <select onChange={handleInputChange} name="rol" className="form-select" aria-label="Default select example">
+                                                            <option defaultValue>Select your Rol</option>
+                                                            {
+                                                                userRol.map(({ val, id }, i) => {
+                                                                    return (
+                                                                        <option value={val} key={i}>{val}</option>
+
+                                                                    )
+                                                                })
+                                                            }
+                                                        </select>
+                                                        <label className="form-label" htmlFor="form3Example1c">Select your rol: 1 for admin or 2 for user</label>
                                                     </div>
                                                 </div>
 
@@ -112,11 +124,11 @@ export const Signup = () => {
                                                         <label className="form-label" for="form3Example4cd">Repeat your password</label>
                                                     </div>
                                                 </div>
-                                                <Link to="/login">
-                                                    <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                        <button type="button" className="btn btn-primary btn-lg" onClick={createUserRequest}>Register</button>
-                                                    </div>
-                                                </Link>
+
+                                                <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                    <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={createUserRequest}>Register</button>
+                                                </div>
+
 
                                             </form>
 
@@ -126,6 +138,25 @@ export const Signup = () => {
                                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                                 className="img-fluid" alt="Sample image" />
 
+                                        </div>
+
+                                        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div className="modal-dialog">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h1 className="modal-title fs-5" id="staticBackdropLabel">Signup Complete</h1>
+
+                                                    </div>
+                                                    <div className="modal-body">
+                                                        Welcome, you will be redirected to login
+                                                    </div>
+                                                    <div className="modal-footer">
+                                                        <Link to="/login">
+                                                            <button type="button" className="btn btn-success">Understood</button>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
