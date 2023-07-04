@@ -44,41 +44,43 @@ export const ViewMuestras = () => {
       </nav>
       <div className="tab-content" id="nav-tabContent">
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-          <table className="table mt-4 rounded">
-            <thead>
-              <tr>
-                {heading.map((head, i) => (
-                  <th scope="col" key={i}>{head}</th>
-                ))
-                }
-              </tr>
-            </thead>
-            <tbody>
-              {muestras.length !== 0 ? (
-                muestras.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
-                  return (
-                    <tr key={i} className="table-active">
-                      <td>{id}</td>
-                      <td>{image_specimen}</td>
-                      <td>{ubication}</td>
-                      <td>{specimen}</td>
-                      <td>{quality_specimen}</td>
-                      <td>
-                        <a href={project_name} target="_plank">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
-                            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                            <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
-                          </svg>
-                        </a>
-                      </td>
-                      <td>{aditional_comments}</td>
-                    </tr>
-                  )
+          <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
+            <table className="table">
+              <thead>
+                <tr>
+                  {heading.map((head, i) => (
+                    <th scope="col" key={i}>{head}</th>
+                  ))
+                  }
+                </tr>
+              </thead>
+              <tbody>
+                {muestras.length !== 0 ? (
+                  muestras.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{id}</td>
+                        <td>{image_specimen}</td>
+                        <td>{ubication}</td>
+                        <td>{specimen}</td>
+                        <td>{quality_specimen}</td>
+                        <td>
+                          <a href={project_name} target="_plank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                              <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                              <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                            </svg>
+                          </a>
+                        </td>
+                        <td>{aditional_comments}</td>
+                      </tr>
+                    )
 
-                }))
-                : (<div></div>)}
-            </tbody>
-          </table>
+                  }))
+                  : (<div></div>)}
+              </tbody>
+            </table>
+          </div>
 
         </div>
         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">

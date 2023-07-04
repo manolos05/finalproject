@@ -29,7 +29,7 @@ export const MakeMuestra = () => {
   };
 
   const [values, handleInputChange, reset] = useForm({
-
+    imagen1: "",
     ubication_image: "",
     area: "",
     specimen: "",
@@ -48,7 +48,7 @@ export const MakeMuestra = () => {
     setSelectedTask(() => filteredTask)
   }
 
-  const { ubication_image, specimen, quality_specimen, image_specimen, aditional_comments } = values;
+  const { ubication_image, specimen, quality_specimen, image_specimen, aditional_comments, imagen1 } = values;
 
   const estado = [{ val: "Conservada", id: 1 }, { val: "Ligeramente afectada", id: 2 }, { val: "Mal estado", id: 3 }];
 
@@ -72,6 +72,19 @@ export const MakeMuestra = () => {
     getLocation();
 
   }, [tasks])
+
+  const updateTask = (id) => {
+
+    let updateState = [...tasks];
+    updateState.forEach(e => {
+      if (e.id === id) {
+        e.is_active = false
+      }
+
+    })
+    setTasks(() => updateState)
+
+  }
 
 
 
@@ -182,7 +195,7 @@ export const MakeMuestra = () => {
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
-                            <select onChange={handleInputChange} name="quality_specimen" className="form-select" aria-label="Default select example">
+                            <select onChange={handleInputChange} value={quality_specimen} name="quality_specimen" className="form-select" aria-label="Default select example">
                               <option defaultValue>Select Sample State</option>
                               {
                                 estado.map(({ val, id }, i) => {
@@ -199,7 +212,7 @@ export const MakeMuestra = () => {
 
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
-                            <input type="file" id="form3Example1c" name="image_specimen" className="form-control" onChange={actions.postUrlImages()} />
+                            <input type="file" id="form3Example1c" name="imagen1" value={imagen1} className="form-control" onChange={(e) => { actions.postUrlImages(e); handleInputChange(e) }} />
                             <label className="form-label" htmlFor="form3Example1c">Image</label>
                           </div>
                         </div>
@@ -244,7 +257,7 @@ export const MakeMuestra = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => { handleChangeProjectState(); location.reload() }} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { handleChangeProjectState(); updateTask(selectedTask[0].id) }} data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>
@@ -263,7 +276,7 @@ export const MakeMuestra = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest() }} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest(); reset() }} data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>

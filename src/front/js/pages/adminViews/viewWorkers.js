@@ -30,7 +30,7 @@ export const ViewWorkers = () => {
   }
 
   return (
-    <>
+    <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
       <table className="table">
         <thead>
           <tr>
@@ -56,7 +56,7 @@ export const ViewWorkers = () => {
         </tbody>
       </table>
 
-    </>
+    </div>
 
 
   )

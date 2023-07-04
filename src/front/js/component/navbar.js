@@ -23,8 +23,15 @@ export const Navbar = () => {
 				</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Contacto</a>
+						<li class="nav-item dropdown">
+							<button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+								Contacto
+							</button>
+							<ul class="dropdown-menu dropdown-menu-dark">
+								<li><a class="dropdown-item" href="mailto:franciscocuello86@gmail.com">Daniel Cuello</a></li>
+								<li><a class="dropdown-item" href="mailto:manusalh@gmail.com">Manuel Salazar</a></li>
+
+							</ul>
 						</li>
 					</ul>
 					<ul class="navbar-nav">
