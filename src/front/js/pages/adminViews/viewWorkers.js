@@ -30,33 +30,36 @@ export const ViewWorkers = () => {
   }
 
   return (
-    <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
-      <table className="table">
-        <thead>
-          <tr>
-            {heading.map((head, i) => (
-              <th scope="col" key={i}>{head}</th>
-            ))
+    <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+      <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
+        <table className="table">
+          <thead>
+            <tr>
+              {heading.map((head, i) => (
+                <th scope="col" key={i}>{head}</th>
+              ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {(
+              store.users.map(({ name, last_name, email, id }, i) => {
+                return (
+                  <tr key={i} className="table-light">
+                    <td>{name}</td>
+                    <td>{last_name}</td>
+                    <td>{email}</td>
+                    <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
+                  </tr>
+                )
+              }))
             }
-          </tr>
-        </thead>
-        <tbody>
-          {(
-            store.users.map(({ name, last_name, email, id }, i) => {
-              return (
-                <tr key={i}>
-                  <td>{name}</td>
-                  <td>{last_name}</td>
-                  <td>{email}</td>
-                  <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
-                </tr>
-              )
-            }))
-          }
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
 
-    </div>
+    </section>
+
 
 
   )

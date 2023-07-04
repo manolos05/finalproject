@@ -25,7 +25,7 @@ export const Navbar = () => {
 					<ul class="navbar-nav">
 						<li class="nav-item dropdown">
 							<button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-								Contacto
+								Contact
 							</button>
 							<ul class="dropdown-menu dropdown-menu-dark">
 								<li><a class="dropdown-item" href="mailto:franciscocuello86@gmail.com">Daniel Cuello</a></li>

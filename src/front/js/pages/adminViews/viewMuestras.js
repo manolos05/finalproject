@@ -24,7 +24,7 @@ export const ViewMuestras = () => {
   }, []);
 
   return (
-    <>
+    <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 
       <nav>
         <div className="nav nav-tabs d-flex justify-content-center mt-2" id="nav-tab" role="tablist">
@@ -58,7 +58,7 @@ export const ViewMuestras = () => {
                 {muestras.length !== 0 ? (
                   muestras.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
                     return (
-                      <tr key={i}>
+                      <tr key={i} className="table-light">
                         <td>{id}</td>
                         <td>{image_specimen}</td>
                         <td>{ubication}</td>
@@ -94,7 +94,7 @@ export const ViewMuestras = () => {
 
 
 
-    </>
+    </section>
 
 
   )

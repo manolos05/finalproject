@@ -32,32 +32,33 @@ export const AdminDashboard = ({ user }) => {
 
 	return (
 
+		<section style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+			<div className="" >
+				<div>
+					<p>hola, {user.name}</p>
+				</div>
+				<div >
+					<div className="row p-4 d-flex justify-content-center text-center">
+						{
+							data.map(({ img, title, text, buttonText, url }, i) => {
+								return (
+									<Cards
+										key={i}
+										img={img}
+										title={title}
+										text={text}
+										url={url}
 
-		<div className="" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-			<div>
-				<p>hola, {user.name}</p>
-			</div>
-			<div >
-				<div className="row p-4 d-flex justify-content-center text-center">
-					{
-						data.map(({ img, title, text, buttonText, url }, i) => {
-							return (
-								<Cards
-									key={i}
-									img={img}
-									title={title}
-									text={text}
-									url={url}
+										buttonText={buttonText}
+									/>
+								)
+							})}
+					</div>
 
-									buttonText={buttonText}
-								/>
-							)
-						})}
 				</div>
 
 			</div>
-
-		</div>
+		</section>
 
 
 	)

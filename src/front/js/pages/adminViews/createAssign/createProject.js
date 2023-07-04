@@ -43,7 +43,7 @@ export const CreateProject = () => {
 
     return (
 
-        <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+        <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
             <div className="container h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-lg-12 col-xl-11">

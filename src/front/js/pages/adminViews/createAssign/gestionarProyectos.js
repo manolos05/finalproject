@@ -66,39 +66,39 @@ export const Gestionar = () => {
     }
 
     return (
+        <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+            <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            {data.map((dat, i) => (
+                                <th scope="col" key={i}>{dat}</th>
+                            ))
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {proyectos.length !== 0 ? (
+                            proyectos.map(({ direction, id, name, is_active }, i) => {
+                                return (
+                                    <tr key={i} className="table-light">
+                                        <td>{id}</td>
+                                        <td>{name}</td>
+                                        <td>{direction}</td>
+                                        <td><button className={`btn ${is_active ? "btn-success" : "btn-danger"}`} onClick={() => { setStatusProject(!is_active, id); updateProjects(id) }} >{is_active ? "Activo" : "Inactivo"}</button></td>
+                                        <td></td>
 
-        <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
-            <table className="table">
-                <thead>
-                    <tr>
-                        {data.map((dat, i) => (
-                            <th scope="col" key={i}>{dat}</th>
-                        ))
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    {proyectos.length !== 0 ? (
-                        proyectos.map(({ direction, id, name, is_active }, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{id}</td>
-                                    <td>{name}</td>
-                                    <td>{direction}</td>
-                                    <td><button className={`btn ${is_active ? "btn-success" : "btn-danger"}`} onClick={() => { setStatusProject(!is_active, id); updateProjects(id) }} >{is_active ? "Activo" : "Inactivo"}</button></td>
-                                    <td></td>
+                                    </tr>
+                                )
 
-                                </tr>
-                            )
-
-                        }))
-                        : (<div>No hay proyectos</div>)}
-                </tbody>
-            </table>
-        </div>
+                            }))
+                            : (<div>No hay proyectos</div>)}
+                    </tbody>
+                </table>
+            </div>
 
 
-
+        </section>
 
 
     )
