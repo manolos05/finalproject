@@ -50,7 +50,7 @@ export const MakeMuestra = () => {
 
   const { ubication_image, specimen, quality_specimen, image_specimen, aditional_comments, imagen1 } = values;
 
-  const estado = [{ val: "Conservada", id: 1 }, { val: "Ligeramente afectada", id: 2 }, { val: "Mal estado", id: 3 }];
+  const estado = [{ val: "Good", id: 1 }, { val: "Slightly affected", id: 2 }, { val: "Bad", id: 3 }];
 
   let storageUSer = JSON.parse(localStorage.getItem("user"));
 
@@ -206,7 +206,7 @@ export const MakeMuestra = () => {
                                 })
                               }
                             </select>
-                            <label className="form-label" htmlFor="form3Example1c">Sample State</label>
+                            <label className="form-label" htmlFor="form3Example1c">Sample Condition</label>
                           </div>
                         </div>
 
@@ -219,7 +219,7 @@ export const MakeMuestra = () => {
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
                             <textarea type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
-                            <label className="form-label" htmlFor="form3Example1c">Adittional Commentes</label>
+                            <label className="form-label" htmlFor="form3Example1c">Adittional Comments</label>
                           </div>
                         </div>
 

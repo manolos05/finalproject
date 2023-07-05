@@ -54,6 +54,24 @@ export const UserGetMuestra = () => {
   }, []);
 
 
+  const updateMuestra = (id) => {
+    let copyMuestra = [...muestras];
+
+    copyMuestra.forEach(muestra => {
+
+      if (muestra.id === id) {
+
+        muestra.specimen = specimen;
+        muestra.quality_specimen = quality_specimen;
+        muestra.aditional_comments = aditional_comments;
+      }
+    })
+
+    setMuestras(() => copyMuestra)
+
+  }
+
+
 
   const handleChangeSampleData = async (id) => {
     try {
@@ -82,7 +100,7 @@ export const UserGetMuestra = () => {
     <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 
       <nav>
-        <div className="nav nav-tabs d-flex justify-content-center mt-2" id="nav-tab" role="tablist">
+        <div className="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-grid-3x2" viewBox="0 0 16 16">
               <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5v-8zM1.5 3a.5.5 0 0 0-.5.5V7h4V3H1.5zM5 8H1v3.5a.5.5 0 0 0 .5.5H5V8zm1 0v4h4V8H6zm4-1V3H6v4h4zm1 1v4h3.5a.5.5 0 0 0 .5-.5V8h-4zm0-1h4V3.5a.5.5 0 0 0-.5-.5H11v4z" />
@@ -163,7 +181,7 @@ export const UserGetMuestra = () => {
                     </div>
                     <div className="d-flex flex-row align-items-center mb-4">
                       <div className="form-outline flex-fill mb-0">
-                        <select onChange={handleInputChange} name="quality_specimen" className="form-select" aria-label="Default select example">
+                        <select onChange={handleInputChange} name="quality_specimen" value={quality_specimen} className="form-select" aria-label="Default select example">
                           <option defaultValue>Seleccionar Estado de la Muestra</option>
                           {
                             estado.map(({ val, id }, i) => {
@@ -187,7 +205,7 @@ export const UserGetMuestra = () => {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId) }} data-bs-dismiss="modal">Confirmar</button>
+                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirmar</button>
                 </div>
               </div>
             </div>
@@ -218,11 +236,11 @@ export const UserGetMuestra = () => {
                     onCloseClick={() => setSelectedMarker(null)}
                   >
                     <div>
-                      <h3>{selectedMarker.image_specimen}</h3>
-                      <p>Estado: {selectedMarker.specimen}</p>
-                      <p>Estado: {selectedMarker.quality_specimen}</p>
+                      <h3>Project:{selectedMarker.image_specimen}</h3>
+                      <p>Name: {selectedMarker.specimen}</p>
+                      <p>Status: {selectedMarker.quality_specimen}</p>
                       <a href={selectedMarker.project_name} target="_blank">
-                        Ver imagen de la muestra
+                        Image:
                         <span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
                             <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />

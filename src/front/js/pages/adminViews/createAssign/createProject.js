@@ -1,19 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "../../../../hooks/useform";
 import { Context } from "../../../store/appContext"
+import { Link } from "react-router-dom";
 
 export const CreateProject = () => {
     const { store, actions } = useContext(Context);
-    const [inputValues, handleInputChange] = useForm({
+    const [inputValues, handleInputChange, reset] = useForm({
         name: "",
         direction: "",
         user_id: "",
     })
 
     const { name, direction, user_id } = inputValues
-
-
-
 
     const createUserTaks = async () => {
         try {
@@ -68,8 +66,8 @@ export const CreateProject = () => {
 
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
-                                                <select onChange={handleInputChange} name="user_id" className="form-select" aria-label="Default select example">
-                                                    <option defaultValue>Seleccionar usuario</option>
+                                                <select onChange={handleInputChange} name="user_id" value={user_id} className="form-select" aria-label="Default select example">
+                                                    <option defaultValue>Select User</option>
                                                     {
                                                         store.users.map((user, i) => {
                                                             return (
@@ -83,7 +81,7 @@ export const CreateProject = () => {
                                             <div className="d-flex flex-row align-items-center mb-4">
                                             </div>
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create</button>
+                                                <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={createUserTaks} >Create</button>
                                             </div>
 
                                         </form>
@@ -99,14 +97,18 @@ export const CreateProject = () => {
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Create Project</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
                                         </div>
                                         <div class="modal-body">
-                                            Create a new task for this project
+                                            Project created successfully.
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" onClick={createUserTaks} data-bs-dismiss="modal">Create</button>
+                                            <Link to="/dashboard">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go to Dashboard</button>
+                                            </Link>
+                                            <button type="button" class="btn btn-primary" onClick={() => reset()} data-bs-dismiss="modal" >Create</button>
                                         </div>
                                     </div>
                                 </div>

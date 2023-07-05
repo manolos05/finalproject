@@ -58,12 +58,15 @@ export const Signup = () => {
                         },
                     }
                 );
-                navigate("/login");
+
             } catch (error) {
                 console.log("error", error);
             };
         }
     }
+
+    const userRol = [{ val: "1 ", id: 1 }, { val: "2", id: 2 }];
+
     return (
         <>
             <section className="vh-100" style={{ backgroundColor: "#eee" }}>
@@ -102,9 +105,20 @@ export const Signup = () => {
                                                 <div className="d-flex flex-row justify-content-center align-items-center mb-4">
                                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input style={error.rol ? errorStyle : {}} type="text" name="rol" id="form3Example1g" className="form-control" value={rol} onChange={handleInputChange} />
+                                                        <select onChange={handleInputChange} name="rol" style={error.rol ? errorStyle : {}} className="form-select" aria-label="Default select example">
+                                                            <option defaultValue>Select your Rol</option>
+                                                            {
+                                                                userRol.map(({ val, id }, i) => {
+                                                                    return (
+                                                                        <option value={val} key={i}>{val}</option>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </select>
+                                                        <label className="form-label" for="form3Example1c">Select 1 for admin or 2 for user</label>
                                                         {error.rol && <div className="badge bg-danger text-wrap">Rol is required</div>}
-                                                        <label className="form-label" for="form3Example1c">Rol</label>
+
+
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
@@ -130,12 +144,30 @@ export const Signup = () => {
                                                         <label className="form-label" for="form3Example4cd">Repeat your password</label>
                                                     </div>
                                                 </div>
-                                                <Link to="/login">
-                                                    <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                        <button type="button" className="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={createUserRequest}>Register</button>
-                                                    </div>
-                                                </Link>
+
+                                                <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                    <button type="button" className="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={createUserRequest}>Register</button>
+                                                </div>
+
                                             </form>
+                                            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div className="modal-dialog">
+                                                    <div className="modal-content">
+                                                        <div className="modal-header">
+                                                            <h1 className="modal-title fs-5" id="staticBackdropLabel">Signup Complete</h1>
+                                                        </div>
+                                                        <div className="modal-body">
+                                                            Welcome, you will be redirected to login
+                                                        </div>
+                                                        <div className="modal-footer">
+                                                            <Link to="/login">
+                                                                <button type="button" className="btn btn-success" data-bs-dismiss="modal">Understood</button>
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div className="col-md-10 col-lg-6 col-xl-7 d-flex justify-content-center order-1 order-lg-2">
                                             <img src="https://res.cloudinary.com/dz6bglmyq/image/upload/v1688517828/Field_Expedition20_e167sa.png"
@@ -149,23 +181,6 @@ export const Signup = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="staticBackdropLabel">Signup Complete</h1>
-                            </div>
-                            <div className="modal-body">
-                                Welcome, you will be redirected to login
-                            </div>
-                            <div className="modal-footer">
-                                <Link to="/login">
-                                    <button type="button" className="btn btn-success">Understood</button>
-                                </Link>
                             </div>
                         </div>
                     </div>
