@@ -25,7 +25,7 @@ export const UserGetMuestra = () => {
   const estado = [{ val: "Conservada", id: 1 }, { val: "Ligeramente afectada", id: 2 }, { val: "Mal estado", id: 3 }];
 
 
-  const [values, handleInputChange] = useForm({
+  const [values, handleInputChange, reset] = useForm({
     specimen: "",
     quality_specimen: "",
     aditional_comments: ""
@@ -69,6 +69,7 @@ export const UserGetMuestra = () => {
             "Content-Type": "application/json",
           },
         })
+        ;
     }
     catch (error) {
       console.log("error", error)
@@ -77,7 +78,8 @@ export const UserGetMuestra = () => {
   }
 
   return (
-    <>
+
+    <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 
       <nav>
         <div className="nav nav-tabs d-flex justify-content-center mt-2" id="nav-tab" role="tablist">
@@ -96,50 +98,51 @@ export const UserGetMuestra = () => {
       </nav>
       <div className="tab-content" id="nav-tabContent">
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
+          <div className="mt-4 mx-auto" style={{ maxWidth: "80%" }}>
+            <table className="table">
+              <thead>
+                <tr>
+                  {heading.map((head, i) => (
+                    <th scope="col" key={i}>{head}</th>
+                  ))
+                  }
+                </tr>
+              </thead>
+              <tbody>
 
-          <table className="table">
-            <thead>
-              <tr>
-                {heading.map((head, i) => (
-                  <th scope="col" key={i}>{head}</th>
-                ))
-                }
-              </tr>
-            </thead>
-            <tbody>
+                {muestras.length !== 0 ? (
+                  muestras.map(({ project_name, id, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
 
-              {muestras.length !== 0 ? (
-                muestras.map(({ project_name, id, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
+                    <tr key={i} className="table-light">
+                      <td>{id}</td>
+                      <td>{image_specimen}</td>
+                      <td>{ubication}</td>
+                      <td>{specimen}</td>
+                      <td>{quality_specimen}</td>
+                      <td>
+                        <a href={project_name} target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                            <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                          </svg>
+                        </a>
+                      </td>
+                      <td>{aditional_comments}</td>
 
-                  <tr key={i}>
-                    <td>{id}</td>
-                    <td>{image_specimen}</td>
-                    <td>{ubication}</td>
-                    <td>{specimen}</td>
-                    <td>{quality_specimen}</td>
-                    <td>
-                      <a href={project_name} target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
-                          <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                          <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
-                        </svg>
-                      </a>
-                    </td>
-                    <td>{aditional_comments}</td>
+                      <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Editar</button>
+                      </td>
+                    </tr>
 
-                    <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Editar</button>
-                    </td>
-                  </tr>
 
+
+                  )
 
 
                 )
-
-
-              )
-                : (<></>)}
-            </tbody>
-          </table>
+                  : (<></>)}
+              </tbody>
+            </table>
+          </div>
 
           <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog">
@@ -184,7 +187,7 @@ export const UserGetMuestra = () => {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId); location.reload() }} data-bs-dismiss="modal">Confirmar</button>
+                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId) }} data-bs-dismiss="modal">Confirmar</button>
                 </div>
               </div>
             </div>
@@ -238,7 +241,7 @@ export const UserGetMuestra = () => {
 
         </div>
       </div>
-    </>
+    </section>
 
   )
 
