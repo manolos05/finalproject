@@ -65,7 +65,7 @@ export const Signup = () => {
         }
     }
 
-    const userRol = [{ val: "1 ", id: 1 }, { val: "2", id: 2 }];
+    const userRol = [{ val: "1", id: 1 }, { val: "2", id: 2 }];
 
     return (
         <>
