@@ -5,7 +5,7 @@ import { Context } from "../../store/appContext";
 export const ViewWorkers = () => {
   const { store, actions } = useContext(Context)
 
-  const heading = ["name", "last Name", "email"]
+  const heading = ["Name", "Last Name", "Email"]
 
   useEffect(() => {
     actions.loadUser()

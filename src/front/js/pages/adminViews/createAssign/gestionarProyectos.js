@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react";
 export const Gestionar = () => {
     const [proyectos, setProyectos] = useState([])
 
-    const data = ["Id", "Nombre del proyecto", "Ubicacion", "Estado"]
+    const data = ["Id", "Project", "Location", "State"]
 
 
     const getProject = async () => {
@@ -85,14 +85,14 @@ export const Gestionar = () => {
                                         <td>{id}</td>
                                         <td>{name}</td>
                                         <td>{direction}</td>
-                                        <td><button className={`btn ${is_active ? "btn-success" : "btn-danger"}`} onClick={() => { setStatusProject(!is_active, id); updateProjects(id) }} >{is_active ? "Activo" : "Inactivo"}</button></td>
+                                        <td><button className={`btn ${is_active ? "btn-success" : "btn-danger"}`} onClick={() => { setStatusProject(!is_active, id); updateProjects(id) }} >{is_active ? "Active" : "Inactive"}</button></td>
                                         <td></td>
 
                                     </tr>
                                 )
 
                             }))
-                            : (<div>No hay proyectos</div>)}
+                            : (<div>No projects</div>)}
                     </tbody>
                 </table>
             </div>

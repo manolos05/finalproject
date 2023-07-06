@@ -34,7 +34,7 @@ export const UserGetMuestra = () => {
 
   const { specimen, quality_specimen, aditional_comments } = values
 
-  const heading = ["Id", "Proyecto", "Ubicación", "Especie", "Calidad", "Imagen", "Comentarios", "Editar"]
+  const heading = ["Id", "Project", "Location", "Species", "Condition", "Image", "Comments", "Edit"]
 
   let storageUSer = JSON.parse(localStorage.getItem("user"));
 
@@ -166,23 +166,23 @@ export const UserGetMuestra = () => {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="staticBackdropLabel">Terminar muestreso</h1>
+                  <h1 className="modal-title fs-5" id="staticBackdropLabel">Edit</h1>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
-                  Solo puede modificar los siguientes datos:
+                  Edit
 
                   <form>
                     <div className="d-flex flex-row align-items-center mb-4">
                       <div className="form-outline flex-fill mb-0">
                         <input type="text" id="form3Example1c" className="form-control" name="specimen" value={specimen} onChange={handleInputChange} />
-                        <label className="form-label" htmlFor="form3Example1c">Especie</label>
+                        <label className="form-label" htmlFor="form3Example1c">Specimen</label>
                       </div>
                     </div>
                     <div className="d-flex flex-row align-items-center mb-4">
                       <div className="form-outline flex-fill mb-0">
                         <select onChange={handleInputChange} name="quality_specimen" value={quality_specimen} className="form-select" aria-label="Default select example">
-                          <option defaultValue>Seleccionar Estado de la Muestra</option>
+                          <option defaultValue>Select Condition</option>
                           {
                             estado.map(({ val, id }, i) => {
                               return (
@@ -192,20 +192,20 @@ export const UserGetMuestra = () => {
                             })
                           }
                         </select>
-                        <label className="form-label" htmlFor="form3Example1c">Seleccionar el estado de la muestra</label>
+                        <label className="form-label" htmlFor="form3Example1c">Condition</label>
                       </div>
                     </div>
                     <div className="d-flex flex-row align-items-center mb-4">
                       <div className="form-outline flex-fill mb-0">
                         <input type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
-                        <label className="form-label" htmlFor="form3Example1c">Comentarios</label>
+                        <label className="form-label" htmlFor="form3Example1c">Comments</label>
                       </div>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirmar</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirm</button>
                 </div>
               </div>
             </div>

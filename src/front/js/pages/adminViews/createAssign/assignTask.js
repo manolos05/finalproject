@@ -8,7 +8,7 @@ export const AssignTask = () => {
 
   const [deleteId, setDeleteId] = useState(null);
 
-  const heading = ["Id", "Proyecto", "Ubicación", "Especie", "Calidad", "Imagen", "Comentarios", "Eliminar"]
+  const heading = ["Id", "Project", "Location", "Species", "Condition", "Image", "Comments", "Delete"]
 
   useEffect(() => {
     actions.getSample()
@@ -84,15 +84,15 @@ export const AssignTask = () => {
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar muestra</h1>
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Sample</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      ¿Está seguro que desea eliminar la muestra?
+                      Press delete to confirm
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-danger" onClick={() => { handleDelete(deleteId) }} data-bs-dismiss="modal">Eliminar muestra</button>
+                      <button type="button" class="btn btn-danger" onClick={() => { handleDelete(deleteId) }} data-bs-dismiss="modal">Delete</button>
                     </div>
                   </div>
                 </div>

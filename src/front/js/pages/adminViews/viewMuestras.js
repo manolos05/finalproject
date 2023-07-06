@@ -7,7 +7,7 @@ export const ViewMuestras = () => {
 
   const [muestras, setMuestras] = useState("")
 
-  const heading = ["Id", "Proyecto", "Ubicación", "Especie", "Calidad", "Imagen", "Comentarios"]
+  const heading = ["Id", "Project", "Location", "Species", "Condition", "Image", "Comments"]
 
 
   useEffect(() => {

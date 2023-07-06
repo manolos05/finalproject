@@ -181,7 +181,7 @@ export const MakeMuestra = () => {
                                 })
                               }
                             </select>
-                            <label className="form-label" htmlFor="form3Example1c">Select the corresponding sample</label>
+                            <label className="form-label" htmlFor="form3Example1c">Project</label>
 
 
                           </div>
@@ -196,7 +196,7 @@ export const MakeMuestra = () => {
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="form-outline flex-fill mb-0">
                             <select onChange={handleInputChange} value={quality_specimen} name="quality_specimen" className="form-select" aria-label="Default select example">
-                              <option defaultValue>Select Sample State</option>
+                              <option defaultValue>Select Sample Condition</option>
                               {
                                 estado.map(({ val, id }, i) => {
                                   return (
@@ -249,15 +249,15 @@ export const MakeMuestra = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">Terminar muestreso</h1>
+              <h1 className="modal-title fs-5" id="staticBackdropLabel">Finish</h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              ¿Desea finalizar este muestreo?
+              To confirm press finish
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => { handleChangeProjectState(); updateTask(selectedTask[0].id) }} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { handleChangeProjectState(); updateTask(selectedTask[0].id) }} data-bs-dismiss="modal">Finish</button>
             </div>
           </div>
         </div>
@@ -268,15 +268,15 @@ export const MakeMuestra = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">Confirnar la muestra</h1>
+              <h1 className="modal-title fs-5" id="staticBackdropLabel">Confirm</h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              Confirmar la muestra
+              To confirm press the button
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest(); reset() }} data-bs-dismiss="modal">Confirmar</button>
+              <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest(); reset() }} data-bs-dismiss="modal">Confirm</button>
             </div>
           </div>
         </div>
