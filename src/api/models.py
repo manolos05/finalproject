@@ -49,6 +49,7 @@ class Muestra(db.Model):
             "quality_specimen": self.quality_specimen,
             "image_specimen": self.image_specimen,
             "aditional_comments": self.aditional_comments,
+            "user_id": self.user_id,
             "fecha": self.fecha.astimezone(pytz.timezone('Chile/Continental')).isoformat() if self.fecha else None
     }
 class Proyecto(db.Model):

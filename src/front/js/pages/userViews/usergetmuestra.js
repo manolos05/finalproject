@@ -4,6 +4,7 @@ import { useForm } from "../../../hooks/useform";
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "./Maps1.css";
+import moment from 'moment'
 
 export const UserGetMuestra = () => {
 
@@ -135,7 +136,7 @@ export const UserGetMuestra = () => {
                       <td>{id}</td>
                       <td>{image_specimen}</td>
                       <td>{ubication}</td>
-                      <td>{fecha}</td>
+                      <td>{moment(fecha).format('MMMM Do YYYY, h:mm:ss a')}</td>
                       <td>{specimen}</td>
                       <td>{quality_specimen}</td>
                       <td>

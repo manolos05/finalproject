@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { LocationSamples } from "../../component/googleMapas";
+import { Context } from "../../store/appContext";
+import moment from 'moment'
+
+
+
 
 
 
 export const ViewMuestras = () => {
+  const { store, actions } = useContext(Context)
 
   const [muestras, setMuestras] = useState("")
 
+
   const [search, setSearch] = useState("")
 
-  const heading = ["Id", "Project", "Location", "Date", "Species", "Condition", "Image", "Comments"]
+  const heading = ["Id", "Project", "Location", "Date", "Name", "Species", "Condition", "Image", "Comments"]
 
 
   useEffect(() => {
+
     try {
       const getMuestras = async () => {
         const resp = await fetch("http://localhost:3001/muestra")
@@ -23,7 +31,28 @@ export const ViewMuestras = () => {
     } catch (error) {
       console.log("error", error);
     };
+
+    actions.loadUser()
+
   }, []);
+
+
+  moment()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
@@ -49,7 +78,7 @@ export const ViewMuestras = () => {
           <div className="mx-auto" style={{ maxWidth: "80%" }}>
             < br />
             <input type="text" onChange={(i) => setSearch(i.target.value)} />
-            <table className="table">
+            <table className="table" id="tablaMuestra">
               <thead>
                 <tr>
                   {heading.map((head, i) => (
@@ -62,15 +91,16 @@ export const ViewMuestras = () => {
                 {muestras.length !== 0 ? (
                   muestras.filter((i) => {
                     return (
-                      search === "" ? i : i.project_name.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search)
+                      search === "" ? i : i.project_name.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search) || i.fecha.toLocaleLowerCase().includes(search)
                     )
-                  }).map(({ project_name, id, area, fecha, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
+                  }).map(({ project_name, id, user_id, fecha, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
                     return (
                       <tr key={i} className="table-light">
                         <td>{id}</td>
                         <td>{image_specimen}</td>
                         <td>{ubication}</td>
-                        <td>{fecha}</td>
+                        <td>{moment(fecha).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                        {store.users.length !== 0 && <td>{`${store.users.find(user => user.id === user_id).name} ${store.users.find(user => user.id === user_id).last_name}`}</td>}
                         <td>{specimen}</td>
                         <td>{quality_specimen}</td>
                         <td>
@@ -91,6 +121,7 @@ export const ViewMuestras = () => {
                   </tr>)}
               </tbody>
             </table>
+
           </div>
 
         </div>
