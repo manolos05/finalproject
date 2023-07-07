@@ -34,7 +34,7 @@ export const UserGetMuestra = () => {
 
   const { specimen, quality_specimen, aditional_comments } = values
 
-  const heading = ["Id", "Project", "Location", "Species", "Condition", "Image", "Comments", "Edit"]
+  const heading = ["Id", "Project", "Location", "Date", "Species", "Condition", "Image", "Comments", "Edit"]
 
   let storageUSer = JSON.parse(localStorage.getItem("user"));
 
@@ -129,17 +129,18 @@ export const UserGetMuestra = () => {
               <tbody>
 
                 {muestras.length !== 0 ? (
-                  muestras.map(({ project_name, id, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
+                  muestras.map(({ project_name, id, fecha, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
 
                     <tr key={i} className="table-light">
                       <td>{id}</td>
                       <td>{image_specimen}</td>
                       <td>{ubication}</td>
+                      <td>{fecha}</td>
                       <td>{specimen}</td>
                       <td>{quality_specimen}</td>
                       <td>
                         <a href={project_name} target="_blank">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-image" viewBox="0 0 16 16">
                             <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                             <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
                           </svg>
@@ -203,16 +204,16 @@ export const UserGetMuestra = () => {
                     </div>
                   </form>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirm</button>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirm</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
+        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
           <div className="App1">
             {!isLoaded ? (
               <h1>Loading...</h1>
@@ -242,7 +243,7 @@ export const UserGetMuestra = () => {
                       <a href={selectedMarker.project_name} target="_blank">
                         Image:
                         <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-image" viewBox="0 0 16 16">
                             <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                             <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
                           </svg></span>

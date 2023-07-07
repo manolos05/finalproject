@@ -42,8 +42,9 @@ export const AssignTask = () => {
     <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 
       <div>
-        <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
-          <table class="table">
+        < br />
+        <div className="mx-auto" style={{ maxWidth: "80%" }}>
+          <table className="table">
             <thead>
               <tr>
                 {heading.map((head, i) => (
@@ -64,7 +65,7 @@ export const AssignTask = () => {
                     <td>{quality_specimen}</td>
                     <td>
                       <a href={project_name} target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-image" viewBox="0 0 16 16">
                           <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                           <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
                         </svg>
@@ -77,31 +78,33 @@ export const AssignTask = () => {
 
               )
                 : (<tr>
-                  <td colSpan="10">No hay muestras</td>
+                  <td colSpan="10">No Samples</td>
                 </tr>)}
-
-              <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Sample</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Press delete to confirm
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-danger" onClick={() => { handleDelete(deleteId) }} data-bs-dismiss="modal">Delete</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
 
             </tbody>
           </table>
+
+
+          <div className="modal fade" id="staticBackdrop" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">Delete Sample</h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  Press delete to confirm
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-danger" onClick={() => { handleDelete(deleteId) }} data-bs-dismiss="modal">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
 
 
 

@@ -12,31 +12,31 @@ export const Navbar = () => {
 
 	return (
 
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div class="container">
-				<a class="navbar-brand" href="http://localhost:3001">
-					<img src="https://www.calacademy.org/sites/all/themes/calacademy_zen/images/logo-green-460px.png" alt="Logo" width="30" height="30" class="d-inline-block align-top" />
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div className="container">
+				<a className="navbar-brand" href="http://localhost:3000">
+					<img src="https://www.calacademy.org/sites/all/themes/calacademy_zen/images/logo-green-460px.png" alt="Logo" width="30" height="30" className="d-inline-block align-top" />
 					Field Expedition
 				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
+				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item dropdown">
-							<button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+				<div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+					<ul className="navbar-nav">
+						<li className="nav-item dropdown">
+							<button className="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 								Contact
 							</button>
-							<ul class="dropdown-menu dropdown-menu-dark">
-								<li><a class="dropdown-item" href="mailto:franciscocuello86@gmail.com">Daniel Cuello</a></li>
-								<li><a class="dropdown-item" href="mailto:manusalh@gmail.com">Manuel Salazar</a></li>
+							<ul className="dropdown-menu dropdown-menu-dark">
+								<li><a className="dropdown-item" href="mailto:franciscocuello86@gmail.com">Daniel Cuello</a></li>
+								<li><a className="dropdown-item" href="mailto:manusalh@gmail.com">Manuel Salazar</a></li>
 
 							</ul>
 						</li>
 					</ul>
-					<ul class="navbar-nav">
+					<ul className="navbar-nav">
 
-						<li class="nav-item">
+						<li className="nav-item">
 							{location.pathname === "/" && <a className="nav-link" href="http://localhost:3000/login">Login</a>}
 						</li>
 

@@ -7,7 +7,9 @@ export const ViewMuestras = () => {
 
   const [muestras, setMuestras] = useState("")
 
-  const heading = ["Id", "Project", "Location", "Species", "Condition", "Image", "Comments"]
+  const [search, setSearch] = useState("")
+
+  const heading = ["Id", "Project", "Location", "Date", "Species", "Condition", "Image", "Comments"]
 
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export const ViewMuestras = () => {
     <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 
       <nav>
-        <div className="nav nav-tabs d-flex justify-content-center mt-2" id="nav-tab" role="tablist">
+        <div className="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-grid-3x2" viewBox="0 0 16 16">
               <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5v-8zM1.5 3a.5.5 0 0 0-.5.5V7h4V3H1.5zM5 8H1v3.5a.5.5 0 0 0 .5.5H5V8zm1 0v4h4V8H6zm4-1V3H6v4h4zm1 1v4h3.5a.5.5 0 0 0 .5-.5V8h-4zm0-1h4V3.5a.5.5 0 0 0-.5-.5H11v4z" />
@@ -43,8 +45,10 @@ export const ViewMuestras = () => {
         </div>
       </nav>
       <div className="tab-content" id="nav-tabContent">
-        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-          <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
+        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
+          <div className="mx-auto" style={{ maxWidth: "80%" }}>
+            < br />
+            <input type="text" onChange={(i) => setSearch(i.target.value)} />
             <table className="table">
               <thead>
                 <tr>
@@ -56,17 +60,22 @@ export const ViewMuestras = () => {
               </thead>
               <tbody>
                 {muestras.length !== 0 ? (
-                  muestras.map(({ project_name, id, area, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
+                  muestras.filter((i) => {
+                    return (
+                      search === "" ? i : i.project_name.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search)
+                    )
+                  }).map(({ project_name, id, area, fecha, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
                     return (
                       <tr key={i} className="table-light">
                         <td>{id}</td>
                         <td>{image_specimen}</td>
                         <td>{ubication}</td>
+                        <td>{fecha}</td>
                         <td>{specimen}</td>
                         <td>{quality_specimen}</td>
                         <td>
                           <a href={project_name} target="_plank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-image" viewBox="0 0 16 16">
                               <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                               <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
                             </svg>
@@ -77,13 +86,15 @@ export const ViewMuestras = () => {
                     )
 
                   }))
-                  : (<div></div>)}
+                  : (<tr>
+                    <td colSpan="10">Nothing here</td>
+                  </tr>)}
               </tbody>
             </table>
           </div>
 
         </div>
-        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
           <div className="mt-4">
             <LocationSamples />
           </div>

@@ -67,7 +67,8 @@ export const Gestionar = () => {
 
     return (
         <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-            <div className="mt-3 mx-auto" style={{ maxWidth: "80%" }}>
+            <div className="mx-auto" style={{ maxWidth: "80%" }}>
+                <br />
                 <table className="table">
                     <thead>
                         <tr>
@@ -92,7 +93,9 @@ export const Gestionar = () => {
                                 )
 
                             }))
-                            : (<div>No projects</div>)}
+                            : (<tr>
+                                <td colSpan="10">No project to show</td>
+                            </tr>)}
                     </tbody>
                 </table>
             </div>

@@ -53,7 +53,7 @@ export const Login = () => {
                                     <div className="card-body p-4 p-lg-5 text-black">
                                         <form>
                                             <div className="d-flex align-items-center mb-3 pb-1">
-                                                <img src="https://www.calacademy.org/sites/all/themes/calacademy_zen/images/logo-green-460px.png" alt="Logo" width="50" height="50" class="d-inline-block align-top" />
+                                                <img src="https://www.calacademy.org/sites/all/themes/calacademy_zen/images/logo-green-460px.png" alt="Logo" width="50" height="50" className="d-inline-block align-top" />
                                                 <span className="h2 fw-bold mb-0">Field Expedition</span>
                                             </div>
                                             <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>Sign into your account</h5>

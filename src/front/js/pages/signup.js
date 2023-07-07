@@ -84,14 +84,14 @@ export const Signup = () => {
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input style={error.name ? errorStyle : {}} type="text" name="name" id="form3Example1c" className="form-control" value={name} onChange={handleInputChange} />
                                                         {error.name && <div className="badge bg-danger text-wrap">Name is required</div>}
-                                                        <label className="form-label" for="form3Example1c">Your Name</label>
+                                                        <label className="form-label" htmlFor="form3Example1c">Your Name</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="text" name="lastname" id="form3Example1c" className="form-control" value={lastname} onChange={handleInputChange} />
-                                                        <label className="form-label" for="form3Example1c">Last Name</label>
+                                                        <label className="form-label" htmlFor="form3Example1c">Last Name</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
@@ -99,7 +99,7 @@ export const Signup = () => {
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input style={error.rut ? errorStyle : {}} type="text" name="rut" id="form3Example1e" className="form-control" value={rut} onChange={handleInputChange} />
                                                         {error.rut && <div className="badge bg-danger text-wrap">Rut is required</div>}
-                                                        <label className="form-label" for="form3Example1c">R.U.T</label>
+                                                        <label className="form-label" htmlFor="form3Example1c">R.U.T</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row justify-content-center align-items-center mb-4">
@@ -115,7 +115,7 @@ export const Signup = () => {
                                                                 })
                                                             }
                                                         </select>
-                                                        <label className="form-label" for="form3Example1c">Select 1 for admin or 2 for user</label>
+                                                        <label className="form-label" htmlFor="form3Example1c">Select 1 for admin or 2 for user</label>
                                                         {error.rol && <div className="badge bg-danger text-wrap">Rol is required</div>}
 
 
@@ -126,7 +126,7 @@ export const Signup = () => {
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input style={error.email ? errorStyle : {}} type="email" name="email" id="form3Example1f" className="form-control" value={email} onChange={handleInputChange} />
                                                         {error.email && <div className="badge bg-danger text-wrap">Email is required</div>}
-                                                        <label className="form-label" for="form3Example3c">Your Email</label>
+                                                        <label className="form-label" htmlFor="form3Example3c">Your Email</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
@@ -134,14 +134,14 @@ export const Signup = () => {
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input style={error.password ? errorStyle : {}} type="password" name="password" id="form3Example1h" className="form-control" value={password} onChange={handleInputChange} />
                                                         {error.password && <div className="badge bg-danger text-wrap">Password is required</div>}
-                                                        <label className="form-label" for="form3Example4c">Password</label>
+                                                        <label className="form-label" htmlFor="form3Example4c">Password</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="password" name="password2" id="form3Example4cd" className="form-control" value={password2} onChange={handleInputChange} />
-                                                        <label className="form-label" for="form3Example4cd">Repeat your password</label>
+                                                        <label className="form-label" htmlFor="form3Example4cd">Repeat your password</label>
                                                     </div>
                                                 </div>
 
@@ -150,7 +150,7 @@ export const Signup = () => {
                                                 </div>
 
                                             </form>
-                                            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                 <div className="modal-dialog">
                                                     <div className="modal-content">
                                                         <div className="modal-header">
