@@ -159,7 +159,9 @@ export const UserGetMuestra = () => {
 
 
                 )
-                  : (<></>)}
+                  : (<tr>
+                    <td colSpan="10">Nothing here</td>
+                  </tr>)}
               </tbody>
             </table>
           </div>

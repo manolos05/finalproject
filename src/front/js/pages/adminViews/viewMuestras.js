@@ -1,23 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { LocationSamples } from "../../component/googleMapas";
 import { Context } from "../../store/appContext";
 import moment from 'moment'
-
-
-
-
+import { DownloadTableExcel } from 'react-export-table-to-excel';
 
 
 export const ViewMuestras = () => {
+  // states
   const { store, actions } = useContext(Context)
 
   const [muestras, setMuestras] = useState("")
 
-
   const [search, setSearch] = useState("")
 
+  // variables
   const heading = ["Id", "Project", "Location", "Date", "Name", "Species", "Condition", "Image", "Comments"]
-
+  const tableRef = useRef(null);
 
   useEffect(() => {
 
@@ -37,26 +35,9 @@ export const ViewMuestras = () => {
   }, []);
 
 
-  moment()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-
+      < br />
       <nav>
         <div className="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
@@ -77,8 +58,9 @@ export const ViewMuestras = () => {
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
           <div className="mx-auto" style={{ maxWidth: "80%" }}>
             < br />
-            <input type="text" onChange={(i) => setSearch(i.target.value)} />
-            <table className="table" id="tablaMuestra">
+            <input className="form-control" placeholder="Search" type="text" onChange={(i) => setSearch(i.target.value)} />
+            < br />
+            <table className="table" ref={tableRef}>
               <thead>
                 <tr>
                   {heading.map((head, i) => (
@@ -91,7 +73,7 @@ export const ViewMuestras = () => {
                 {muestras.length !== 0 ? (
                   muestras.filter((i) => {
                     return (
-                      search === "" ? i : i.project_name.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search) || i.fecha.toLocaleLowerCase().includes(search)
+                      search === "" ? i : i.image_specimen.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search) || i.fecha.toLocaleLowerCase().includes(search)
                     )
                   }).map(({ project_name, id, user_id, fecha, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
                     return (
@@ -121,6 +103,16 @@ export const ViewMuestras = () => {
                   </tr>)}
               </tbody>
             </table>
+
+            <DownloadTableExcel
+              filename="users table"
+              sheet="users"
+              currentTableRef={tableRef.current}
+            >
+
+              <button className="btn btn-success"> Export excel </button>
+
+            </DownloadTableExcel>
 
           </div>
 

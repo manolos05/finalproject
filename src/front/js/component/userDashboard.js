@@ -13,7 +13,7 @@ export const UserDashboard = ({ user }) => {
 			img: "https://res.cloudinary.com/dz6bglmyq/image/upload/v1688414542/vermuestras_bvoo1m.png",
 			title: "Watch Samples",
 			text: "Edit and view your samples.",
-			buttonText: "Ver",
+			buttonText: "Watch",
 			url: "/dashboard/usergetmuestra",
 		},
 	];
