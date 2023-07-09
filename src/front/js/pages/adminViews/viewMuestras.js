@@ -73,16 +73,16 @@ export const ViewMuestras = () => {
                 {muestras.length !== 0 ? (
                   muestras.filter((i) => {
                     return (
-                      search === "" ? i : i.image_specimen.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search) || i.fecha.toLocaleLowerCase().includes(search)
+                      search === "" ? i : i.user_lastname.toLocaleLowerCase().includes(search) || i.user_name.toLocaleLowerCase().includes(search) || i.image_specimen.toLocaleLowerCase().includes(search) || i.specimen.toLocaleLowerCase().includes(search) || i.quality_specimen.toLocaleLowerCase().includes(search) || i.ubication.toLocaleLowerCase().includes(search) || i.fecha.toLocaleLowerCase().includes(search)
                     )
-                  }).map(({ project_name, id, user_id, fecha, aditional_comments, specimen, image_specimen, quality_specimen, ubication }, i) => {
+                  }).map(({ project_name, id, fecha, aditional_comments, specimen, image_specimen, quality_specimen, ubication, user_name, user_lastname }, i) => {
                     return (
                       <tr key={i} className="table-light">
                         <td>{id}</td>
                         <td>{image_specimen}</td>
                         <td>{ubication}</td>
                         <td>{moment(fecha).format('MMMM Do YYYY, h:mm:ss a')}</td>
-                        {store.users.length !== 0 && <td>{`${store.users.find(user => user.id === user_id).name} ${store.users.find(user => user.id === user_id).last_name}`}</td>}
+                        <td>{`${user_name} ${user_lastname}`}</td>
                         <td>{specimen}</td>
                         <td>{quality_specimen}</td>
                         <td>

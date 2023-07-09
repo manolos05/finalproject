@@ -1,7 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pytz
+from sqlalchemy.sql import func
+
 db = SQLAlchemy()
+
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
@@ -25,6 +30,8 @@ class User(db.Model):
             "password": self.password
             # do not serialize the password, its a security breach
         }
+    
+
 class Muestra(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String(150), unique=False, nullable=False)
@@ -37,8 +44,9 @@ class Muestra(db.Model):
     aditional_comments = db.Column(db.String(90), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     proyecto_id = db.Column(db.Integer, db.ForeignKey('proyecto.id'), nullable=False)
-    fecha = db.Column(db.DateTime, nullable=False, default=datetime.now(pytz.timezone('Chile/Continental')))
+    fecha = db.Column(db.DateTime(timezone=True), default=datetime.now)
     def serialize(self):
+        print("Fecha antes de convertir:", self.fecha)
         return {
             "id" : self.id,
             "project_name": self.project_name,
@@ -50,6 +58,8 @@ class Muestra(db.Model):
             "image_specimen": self.image_specimen,
             "aditional_comments": self.aditional_comments,
             "user_id": self.user_id,
+            "user_name": self.user.name if self.user else None,
+            "user_lastname": self.user.last_name if self.user else None,
             "fecha": self.fecha.astimezone(pytz.timezone('Chile/Continental')).isoformat() if self.fecha else None
     }
 class Proyecto(db.Model):
