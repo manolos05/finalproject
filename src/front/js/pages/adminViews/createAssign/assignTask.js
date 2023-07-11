@@ -43,7 +43,7 @@ export const AssignTask = () => {
 
       <div>
         < br />
-        <div className="mx-auto" style={{ maxWidth: "80%" }}>
+        <div className="table-responsive mx-auto" style={{ maxWidth: "80%" }}>
           <table className="table">
             <thead>
               <tr>

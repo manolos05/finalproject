@@ -23,7 +23,7 @@ export const UserGetMuestra = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [editId, setEditId] = useState("")
 
-  const estado = [{ val: "Conservada", id: 1 }, { val: "Ligeramente afectada", id: 2 }, { val: "Mal estado", id: 3 }];
+  const estado = [{ val: "Good", id: 1 }, { val: "Slightly affected", id: 2 }, { val: "Bad", id: 3 }];
 
 
   const [values, handleInputChange, reset] = useForm({
@@ -149,7 +149,7 @@ export const UserGetMuestra = () => {
                       </td>
                       <td>{aditional_comments}</td>
 
-                      <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Editar</button>
+                      <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Edit</button>
                       </td>
                     </tr>
 

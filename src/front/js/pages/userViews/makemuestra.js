@@ -275,7 +275,7 @@ export const MakeMuestra = () => {
               To confirm press the button
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary" onClick={() => { createSampleRequest(); reset() }} data-bs-dismiss="modal">Confirm</button>
             </div>
           </div>
