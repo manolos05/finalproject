@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
+
 export const Footer = () => (
-    <footer className="footer mt-auto py-3 text-center bg-light">
+    <footer className="d-flex flex-column align-items-center justify-contet-center">
         <p>
             Made by: {" "}
             <a> Daniel Cuello & Manuel Salazar  </a>

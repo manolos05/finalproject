@@ -34,30 +34,32 @@ export const ViewWorkers = () => {
 
       <div className=" mx-auto" style={{ maxWidth: "80%" }}>
         <br />
-        <table className="table">
-          <thead>
-            <tr>
-              {heading.map((head, i) => (
-                <th scope="col" key={i}>{head}</th>
-              ))
+        <div className="table-responsive">
+          <table className="table">
+            <thead>
+              <tr>
+                {heading.map((head, i) => (
+                  <th scope="col" key={i}>{head}</th>
+                ))
+                }
+              </tr>
+            </thead>
+            <tbody>
+              {(
+                store.users.map(({ name, last_name, email, id }, i) => {
+                  return (
+                    <tr key={i} className="table-light">
+                      <td>{name}</td>
+                      <td>{last_name}</td>
+                      <td>{email}</td>
+                      <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
+                    </tr>
+                  )
+                }))
               }
-            </tr>
-          </thead>
-          <tbody>
-            {(
-              store.users.map(({ name, last_name, email, id }, i) => {
-                return (
-                  <tr key={i} className="table-light">
-                    <td>{name}</td>
-                    <td>{last_name}</td>
-                    <td>{email}</td>
-                    <td><button onClick={() => handledelete(id)} className="btn btn-danger">Delete</button></td>
-                  </tr>
-                )
-              }))
-            }
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </section>

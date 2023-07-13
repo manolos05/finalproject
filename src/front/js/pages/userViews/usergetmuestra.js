@@ -118,94 +118,96 @@ export const UserGetMuestra = () => {
       <div className="tab-content" id="nav-tabContent">
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
           <div className="mt-4 mx-auto" style={{ maxWidth: "80%" }}>
-            <table className="table">
-              <thead>
-                <tr>
-                  {heading.map((head, i) => (
-                    <th scope="col" key={i}>{head}</th>
-                  ))
-                  }
-                </tr>
-              </thead>
-              <tbody>
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    {heading.map((head, i) => (
+                      <th scope="col" key={i}>{head}</th>
+                    ))
+                    }
+                  </tr>
+                </thead>
+                <tbody>
 
-                {muestras.length !== 0 ? (
-                  muestras.map(({ project_name, id, fecha, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
+                  {muestras.length !== 0 ? (
+                    muestras.map(({ project_name, id, fecha, aditional_comments, specimen, image_specimen, ubication, quality_specimen, lat, lng }, i) =>
 
-                    <tr key={i} className="table-light">
-                      <td>{id}</td>
-                      <td>{image_specimen}</td>
-                      <td>{ubication}</td>
-                      <td>{moment(fecha).format('MMMM Do YYYY, h:mm:ss a')}</td>
-                      <td>{specimen}</td>
-                      <td>{quality_specimen}</td>
-                      <td>
-                        <a href={project_name} target="_blank">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-image" viewBox="0 0 16 16">
-                            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                            <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
-                          </svg>
-                        </a>
-                      </td>
-                      <td>{aditional_comments}</td>
+                      <tr key={i} className="table-light">
+                        <td>{id}</td>
+                        <td>{image_specimen}</td>
+                        <td>{ubication}</td>
+                        <td>{moment(fecha).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                        <td>{specimen}</td>
+                        <td>{quality_specimen}</td>
+                        <td>
+                          <a href={project_name} target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-image" viewBox="0 0 16 16">
+                              <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                              <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                            </svg>
+                          </a>
+                        </td>
+                        <td>{aditional_comments}</td>
 
-                      <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Edit</button>
-                      </td>
-                    </tr>
+                        <td><button className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="id" defaultValue onClick={() => setEditId(id)}>Edit</button>
+                        </td>
+                      </tr>
 
+
+
+                    )
 
 
                   )
+                    : (<tr>
+                      <td colSpan="10">Nothing here</td>
+                    </tr>)}
+                </tbody>
+              </table>
+            </div>
 
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Edit</h1>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body">
+                    Edit
 
-                )
-                  : (<tr>
-                    <td colSpan="10">Nothing here</td>
-                  </tr>)}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="staticBackdropLabel">Edit</h1>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                  Edit
-
-                  <form>
-                    <div className="d-flex flex-row align-items-center mb-4">
-                      <div className="form-outline flex-fill mb-0">
-                        <input type="text" id="form3Example1c" className="form-control" name="specimen" value={specimen} onChange={handleInputChange} />
-                        <label className="form-label" htmlFor="form3Example1c">Specimen</label>
+                    <form>
+                      <div className="d-flex flex-row align-items-center mb-4">
+                        <div className="form-outline flex-fill mb-0">
+                          <input type="text" id="form3Example1c" className="form-control" name="specimen" value={specimen} onChange={handleInputChange} />
+                          <label className="form-label" htmlFor="form3Example1c">Specimen</label>
+                        </div>
                       </div>
-                    </div>
-                    <div className="d-flex flex-row align-items-center mb-4">
-                      <div className="form-outline flex-fill mb-0">
-                        <select onChange={handleInputChange} name="quality_specimen" value={quality_specimen} className="form-select" aria-label="Default select example">
-                          <option defaultValue>Select Condition</option>
-                          {
-                            estado.map(({ val, id }, i) => {
-                              return (
-                                <option value={val} key={i}>{val}</option>
+                      <div className="d-flex flex-row align-items-center mb-4">
+                        <div className="form-outline flex-fill mb-0">
+                          <select onChange={handleInputChange} name="quality_specimen" value={quality_specimen} className="form-select" aria-label="Default select example">
+                            <option defaultValue>Select Condition</option>
+                            {
+                              estado.map(({ val, id }, i) => {
+                                return (
+                                  <option value={val} key={i}>{val}</option>
 
-                              )
-                            })
-                          }
-                        </select>
-                        <label className="form-label" htmlFor="form3Example1c">Condition</label>
+                                )
+                              })
+                            }
+                          </select>
+                          <label className="form-label" htmlFor="form3Example1c">Condition</label>
+                        </div>
                       </div>
-                    </div>
-                    <div className="d-flex flex-row align-items-center mb-4">
-                      <div className="form-outline flex-fill mb-0">
-                        <input type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
-                        <label className="form-label" htmlFor="form3Example1c">Comments</label>
+                      <div className="d-flex flex-row align-items-center mb-4">
+                        <div className="form-outline flex-fill mb-0">
+                          <input type="text" id="form3Example1c" className="form-control" name="aditional_comments" value={aditional_comments} onChange={handleInputChange} />
+                          <label className="form-label" htmlFor="form3Example1c">Comments</label>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>

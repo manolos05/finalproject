@@ -71,7 +71,7 @@ export const CreateProject = () => {
                                                     {
                                                         store.users.map((user, i) => {
                                                             return (
-                                                                user.rol == 2 && <option value={user.id} key={i}>{user.name}</option>
+                                                                user.rol == 2 && <option value={user.id} key={i}>{user.name} {user.last_name}</option>
 
                                                             )
                                                         })
