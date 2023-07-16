@@ -4,7 +4,7 @@ export const AdminDashboard = ({ user }) => {
 	const data = [
 		{
 			img: "https://i.pinimg.com/564x/37/a7/63/37a763eb1c17d3a3cf8048667965a0da.jpg",
-			title: "Make Sample",
+			title: "Create Sample",
 			text: "Assigns Tasks by User",
 			buttonText: "Create",
 			url: "/dashboard/create"
@@ -25,10 +25,12 @@ export const AdminDashboard = ({ user }) => {
 		},
 	]
 	return (
-		<section className="vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+		<section className="" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1688068965/banner3_xq4wvf.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 			<div className="" >
-				<div>
-					<p>Hello, {user.name}</p>
+				<div className="d-flex justify-content-end">
+					<div className="m-2 mx-4">
+						<h2>Hello, {user.name}</h2>
+					</div>
 				</div>
 				<div >
 					<div className="row p-4 d-flex justify-content-center text-center">

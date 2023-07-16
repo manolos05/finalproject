@@ -92,7 +92,7 @@ export const Login = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowModal(false)}>
-                        Cerrar
+                        Close
                     </Button>
                 </Modal.Footer>
             </Modal>

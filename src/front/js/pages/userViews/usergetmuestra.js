@@ -175,7 +175,7 @@ export const UserGetMuestra = () => {
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div className="modal-body">
-                    Edit
+
 
                     <form>
                       <div className="d-flex flex-row align-items-center mb-4">
@@ -206,13 +206,14 @@ export const UserGetMuestra = () => {
                           <label className="form-label" htmlFor="form3Example1c">Comments</label>
                         </div>
                       </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirm</button>
+                      </div>
                     </form>
                   </div>
                 </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" onClick={() => { handleChangeSampleData(editId); updateMuestra(editId); reset() }} data-bs-dismiss="modal">Confirm</button>
-                </div>
+
               </div>
             </div>
           </div>

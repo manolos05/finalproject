@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useform";
+import { rutValidate } from 'rut-helpers';
+
+
 export const Signup = () => {
     const navigate = useNavigate();
     const [inputValues, handleInputChange] = useForm({
@@ -42,7 +45,12 @@ export const Signup = () => {
             password2: password2 === "" || password !== password2
         });
         if (password !== password2) {
-            alert("Las contraseñas no coinciden.");
+            alert("The passwords do not match.");
+            return;
+        }
+        const isValidRut = rutValidate(rut);
+        if (!isValidRut) {
+            alert("RUT does not exist.");
             return;
         }
         if (

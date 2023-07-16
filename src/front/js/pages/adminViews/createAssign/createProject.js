@@ -9,9 +9,15 @@ export const CreateProject = () => {
         name: "",
         direction: "",
         user_id: "",
-    })
+    });
+
+
+
+
 
     const { name, direction, user_id } = inputValues
+
+
 
     const createUserTaks = async () => {
         try {
@@ -67,7 +73,7 @@ export const CreateProject = () => {
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <select onChange={handleInputChange} name="user_id" value={user_id} className="form-select" aria-label="Default select example">
-                                                    <option defaultValue>Select User</option>
+                                                    <option value="" defaultValue>Select User</option>
                                                     {
                                                         store.users.map((user, i) => {
                                                             return (
@@ -81,7 +87,7 @@ export const CreateProject = () => {
                                             <div className="d-flex flex-row align-items-center mb-4">
                                             </div>
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={createUserTaks} >Create</button>
+                                                <button type="button" className="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={createUserTaks} disabled={!direction || !name || !user_id} >Create</button>
                                             </div>
 
                                         </form>
@@ -102,7 +108,7 @@ export const CreateProject = () => {
 
                                         </div>
                                         <div className="modal-body">
-                                            Project created successfully.
+                                            Project created successfully. To create other project press Create or go to dashboard for exit.
                                         </div>
                                         <div className="modal-footer">
                                             <Link to="/dashboard">

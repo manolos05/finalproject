@@ -39,12 +39,13 @@ export const Navbar = () => {
 						<li className="nav-item">
 							{location.pathname === "/" && <a className="nav-link" href="http://localhost:3000/login">Login</a>}
 						</li>
+						<li className="nav-item">
+							{logoutCondition && <button onClick={() => actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
+						</li>
 
 					</ul>
 				</div>
-				<div className="ml-auto">
-					{logoutCondition && <button onClick={() => actions.logOut(navigate)} className="btn btn-primary">Log Out</button>}
-				</div>
+
 			</div>
 		</nav>
 

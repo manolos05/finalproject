@@ -4,7 +4,7 @@ export const CreateMuestra = () => {
 	const data = [
 		{
 			img: "https://res.cloudinary.com/dz6bglmyq/image/upload/v1688339501/add_zh8o3m.png",
-			title: "Add task per User",
+			title: "Create Project",
 			text: "Tasks",
 			buttonText: "Add",
 			url: "/dashboard/createproject",

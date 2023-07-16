@@ -11,7 +11,7 @@ export const UserDashboard = ({ user }) => {
 		},
 		{
 			img: "https://res.cloudinary.com/dz6bglmyq/image/upload/v1688414542/vermuestras_bvoo1m.png",
-			title: "Watch Samples",
+			title: "View Samples",
 			text: "Edit and view your samples.",
 			buttonText: "Watch",
 			url: "/dashboard/usergetmuestra",
@@ -28,8 +28,10 @@ export const UserDashboard = ({ user }) => {
 				backgroundRepeat: "no-repeat",
 			}}
 		>
-			<div>
-				<p>hola, {user.name}</p>
+			<div className="d-flex justify-content-end">
+				<div className="m-2 mx-4">
+					<h2>Hello, {user.name}</h2>
+				</div>
 			</div>
 			<div className="row  p-4 d-flex justify-content-center text-center">
 				{data.map(({ img, title, text, buttonText, url }, i) => {

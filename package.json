@@ -85,6 +85,7 @@
 		"react-dom": "^16.8.4",
 		"react-export-table-to-excel": "^1.0.6",
 		"react-polyfills": "0.0.1",
-		"react-router-dom": "^6.3.0"
+		"react-router-dom": "^6.3.0",
+		"rut-helpers": "^0.1.1"
 	}
 }

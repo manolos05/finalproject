@@ -2,36 +2,25 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-
-
 export const Home = () => {
-
 	return (
 		<>
-			<div
-				className="alert alert-info container ml-3 text-center text-black"
-				style={{ backgroundColor: "" }}
-			>
-				Explora los reportes, visualiza las muestras en tiempo real y descubre
-				la información que necesitas al instante
-			</div>
-			<div className="row" style={{ backgroundColor: "rgb()" }}>
+			<div className="row mb-2" style={{ backgroundImage: "url('https://res.cloudinary.com/dz6bglmyq/image/upload/v1689301357/fondo_6_e8obbx.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
 				<div
 					className="col-4  container-fluid"
-					style={{ backgroundColor: "rgb(17, 122, 101)", borderRadius: "3%" }}
+					style={{ backgroundColor: "rgb(120, 202, 29)", borderRadius: "3%", marginTop: "80px" }}
 				>
 					<h1
 						className="lh-base text-white fs-1"
 						style={{ textAlign: "left", margin: "30px auto 0" }}
 					>
-						"Potencia tu proceso de toma y gestión de{" "}
-						<span className="text-black">muestras</span> con nuestra plataforma{" "}
-						<span className="text-black">líder en su clase"</span>
+						"Empower your{" "}
+						<span className="text-black">sample collection</span> and management process with {" "}
+						<span className="text-black">our best-in-class platform"</span>
 					</h1>
 					<br></br>
 					<h3 className="lh-base text-white" style={{ textAlign: "left" }}>
-						Ahorra tiempo en terreno y procesa tus muestras de forma
-						automatizada para una mayor eficiencia.
+						Save time in the field and process your samples automatically for greater efficiency.
 					</h3>
 					<div className="d-flex justify-content-center">
 						<button type="button" className="btn btn-dark mt-5">
@@ -39,30 +28,24 @@ export const Home = () => {
 								href="http://localhost:3000/signup"
 								className="text-white text-decoration-none"
 							>
-								Comenzar
+								Sign Up
 							</a>
 						</button>
 					</div>
 				</div>
-				<div className="col-6 d-flex">
+				<div className="col-6 " style={{
+					marginTop: "80px"
+				}}>
 					<img
-						src="https://res.cloudinary.com/dz6bglmyq/image/upload/v1688328444/Sin_equipos_especiales3_hxvq43.png"
+						src="https://res.cloudinary.com/dz6bglmyq/image/upload/v1689302380/geolo4_q3tx89.png"
 						style={{
-							width: "400px",
+							marginTop: "80px",
+							width: "600px",
 							margin: "0",
 							borderRadius: "5%",
 						}}
 					/>
 				</div>
-				<h1 className="mt-5 text-center">Con Field Expedition podras...</h1>
-				<p className="d-flex justify-content-center">
-					<img
-						src="https://res.cloudinary.com/dz6bglmyq/image/upload/v1688330120/Field_Expedition2_sp1xfs.png"
-						style={{
-							borderRadius: "5%",
-						}}
-					/>
-				</p>
 			</div>
 		</>
 	);
