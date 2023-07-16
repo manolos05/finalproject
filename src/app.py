@@ -382,11 +382,15 @@ def update_muestra(muestra_id):
     muestra.specimen = data.get('specimen', muestra.specimen)
     muestra.quality_specimen = data.get('quality_specimen', muestra.quality_specimen)
     muestra.aditional_comments = data.get('aditional_comments', muestra.aditional_comments)
+    muestra.lng = data.get('lng', muestra.lng)
+    muestra.lat = data.get('lat', muestra.lat)
+   
 
     # Guardar los cambios en la base de datos
     db.session.commit()
 
     return jsonify({'message': 'Muestra actualizada correctamente', 'muestra': muestra.serialize()}), 200
+
 
 #PUT estado del Proyecto
 @app.route('/proyecto/<int:id>', methods=['PUT'])
