@@ -71,8 +71,9 @@ export const LocationSamples = () => {
               >
                 <div>
                   <h3>{selectedMarker.image_specimen}</h3>
-                  <p>Especie: {selectedMarker.specimen}</p>
-                  <p>Estado: {selectedMarker.quality_specimen}</p>
+                  <p><strong>Specie:</strong> {selectedMarker.specimen}</p>
+                  <p><strong>Condition:</strong> {selectedMarker.quality_specimen}</p>
+                  <p><strong>By:</strong> {selectedMarker.user_name} {selectedMarker.user_lastname}</p>
                   <a href={selectedMarker.project_name} target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
                       <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
